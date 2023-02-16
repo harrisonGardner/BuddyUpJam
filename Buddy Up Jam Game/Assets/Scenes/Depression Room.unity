@@ -681,9 +681,10 @@ GameObject:
   - component: {fileID: 1449402558}
   - component: {fileID: 1449402557}
   - component: {fileID: 1449402556}
+  - component: {fileID: 1449402560}
   m_Layer: 0
-  m_Name: PlaceholderFuniture
-  m_TagString: Untagged
+  m_Name: Bed
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,8 +760,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449402555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20917249, y: 1.428, z: 1.486}
-  m_LocalScale: {x: 3.0306056, y: 0.48121, z: 1.2076}
+  m_LocalPosition: {x: -0.20917249, y: 1.47, z: 1.486}
+  m_LocalScale: {x: 4.26285, y: 0.67687, z: 1.6986102}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
