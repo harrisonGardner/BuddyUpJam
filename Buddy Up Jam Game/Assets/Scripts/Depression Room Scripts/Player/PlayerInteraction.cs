@@ -30,12 +30,14 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactDistance))
         {
-            if (hit.collider.gameObject.CompareTag("Interactable"))
+            GameObject highlightedObject = hit.collider.gameObject;
+
+            if (highlightedObject.CompareTag("Interactable"))
             {
                 interactionTextCanvas.SetActive(true);
 
                 //Snap text to newly highlighted object
-                if (hit.collider.gameObject != lastHighlighted)
+                if (highlightedObject != lastHighlighted)
                     interactionTextCanvas.transform.position = hit.point;
 
                 interactionTextCanvas.GetComponent<InteractionText>().SetTargetPosition(hit.point + (cam.transform.position - interactionTextCanvas.transform.position).normalized * textOffset + new Vector3(0, interactionTextCanvas.GetComponent<RectTransform>().sizeDelta.y * (interactionTextCanvas.GetComponent<RectTransform>().localScale.y/2), 0) );
@@ -47,6 +49,9 @@ public class PlayerInteraction : MonoBehaviour
                 //First child is main text, second child is sub text
                 interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().mainText;
                 interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().subText;
+
+                if(Input.GetKeyDown(KeyCode.E))
+                    highlightedObject.GetComponent<Interactable>().Interact();
 
                 lastHighlighted = hit.collider.gameObject;
             }

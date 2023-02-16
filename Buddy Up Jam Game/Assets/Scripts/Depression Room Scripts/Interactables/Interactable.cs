@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    private bool highlight = false;
     public string mainText = "What the item is";
     public string subText = "About the item stuff goes here";
+
+    private IInteraction interaction;
     // Start is called before the first frame update
     void Start()
     {
-        
+        interaction = GetComponent<IInteraction>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        highlight = false;
+        
     }
 
-    /// <summary>
-    /// Sets the object to be currently highlighted
-    /// </summary>
-    public void Highlight()
+    public void Interact()
     {
-        highlight = true;
+        if(interaction != null)
+        {
+            interaction.Interact();
+        }
     }
 }
