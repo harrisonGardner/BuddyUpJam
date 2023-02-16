@@ -33,14 +33,14 @@ public class CameraLook : MonoBehaviour
         Vector2 rotationDelta = lastFrameRotation - rotation;
         
 
-        cam.transform.position = new Vector3(transform.position.x, transform.position.y + camHeight, transform.position.z);
+        //cam.transform.position = new Vector3(transform.position.x, transform.position.y + camHeight, transform.position.z);
 
         // Apply camera rotation
         // make sure the change in rotation isn't too great from the last frame,
         // there's an issue where Input.GetAxisRaw with the mouse deltas will return a massive number
         if (Mathf.Abs(rotationDelta.x) < 75f && Mathf.Abs(rotationDelta.y) < 75f)
         {
-            cam.transform.eulerAngles = new Vector3(rotation.x, rotation.y, 0);
+            //cam.transform.eulerAngles = new Vector3(rotation.x, rotation.y, 0);
             lastFrameRotation = rotation;
         }
         else
@@ -53,6 +53,6 @@ public class CameraLook : MonoBehaviour
     private void FixedUpdate()
     {
         //Apply player rotation
-        transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0);
+        
     }
 }

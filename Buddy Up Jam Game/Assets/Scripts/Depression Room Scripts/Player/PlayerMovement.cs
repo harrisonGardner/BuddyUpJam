@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
 
         Vector3 moveVector = ((transform.forward * moveInputs.y) + (transform.right * moveInputs.x)).normalized;
 
