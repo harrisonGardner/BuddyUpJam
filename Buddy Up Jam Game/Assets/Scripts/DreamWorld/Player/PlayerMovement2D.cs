@@ -29,6 +29,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     public float jumpHeight = 5f;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,11 @@ public class PlayerMovement2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            GetComponent<PlayerHealth>().Damage(100);
+        }
+
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
