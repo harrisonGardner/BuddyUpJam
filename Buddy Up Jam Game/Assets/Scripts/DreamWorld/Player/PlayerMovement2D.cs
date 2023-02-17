@@ -19,9 +19,13 @@ public class PlayerMovement2D : MonoBehaviour
     public LayerMask whatIsGround;
     public bool grounded;
 
+    public float coyoteTime = 0.1f;
+    private float coyoteTimer = 0f;
+
     private bool jumpBuffer = false;
     public float jumpCooldown = 0.25f;
     private float jumpCooldownTimer = 0f;
+    public bool jumpApexReached = false;
 
     public float jumpHeight = 5f;
 
@@ -45,12 +49,23 @@ public class PlayerMovement2D : MonoBehaviour
 
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.05f, whatIsGround);
-        Debug.DrawRay(transform.position, Vector3.down, Color.red, playerHeight + 0.05f);
 
-        if (!jumpBuffer && grounded && Input.GetKey(KeyCode.Space))
+        if (grounded)
         {
+            coyoteTimer = coyoteTime;
+        }
+        else if (!grounded)
+        {
+            if(coyoteTimer > 0)
+                coyoteTimer -= Time.deltaTime;
+        }
+
+        if (!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
             jumpBuffer = true;
+            coyoteTimer = 0;
         }
         if (jumpBuffer && !grounded)
         {
@@ -67,6 +82,19 @@ public class PlayerMovement2D : MonoBehaviour
             }
         }
 
+        if (coyoteTimer > 0)
+            jumpApexReached = false;
+
+        if (!jumpApexReached && coyoteTimer <= 0 && !grounded && rb.velocity.y < 0)
+        {
+            jumpApexReached = true;
+            Debug.Log("velocity negative: " + rb.velocity.y);
+        }
+        else if (!jumpApexReached && !grounded && Input.GetKeyUp(KeyCode.Space))
+        {
+            jumpApexReached = true;
+            rb.AddForce(Vector3.down * Mathf.Abs(rb.velocity.y * 2), ForceMode.Impulse);
+        }
 
         SpeedControl();
     }
