@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Interactable
   - InteractionTextCanvas
+  - Enemy
+  - EnemyAttackTrigger
+  - EnvironmentHazard
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
