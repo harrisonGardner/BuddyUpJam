@@ -7,9 +7,13 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("EnvironmentHazard"))
+        if (collision.gameObject.CompareTag("EnvironmentHazard"))
         {
             GetComponent<PlayerHealth>().Damage(collision.gameObject.GetComponent<EnvironmentHazard>().damage);
+        }
+        else if (collision.gameObject.CompareTag("CrumbleHazard"))
+        {
+            collision.gameObject.GetComponent<CrumblePlatform>().StartCrumble();
         }
     }
 

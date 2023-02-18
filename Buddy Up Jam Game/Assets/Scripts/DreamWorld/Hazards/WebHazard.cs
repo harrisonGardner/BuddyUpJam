@@ -15,18 +15,26 @@ public class WebHazard : MonoBehaviour
     {
         spiderChild = transform.GetChild(0).gameObject;
         spiderChild.transform.parent = null;
-        spiderChild.transform.forward = transform.up;
+        spiderChild.transform.up = transform.up;
     }
 
     public void Update()    
     {
         if (targetSet)
         {
-            float angleToTarget = Vector3.SignedAngle(spiderChild.transform.position, target, spiderChild.transform.right);
-            spiderChild.transform.Rotate(new Vector3(0, 0, angleToTarget), Space.Self);
+            spiderChild.transform.right = spiderChild.transform.position - target;
 
             Vector3 moveTowardsPosition = Vector3.MoveTowards(spiderChild.transform.position, target, spiderMoveSpeed * Time.deltaTime);
+
+            float angleToTarget = Vector3.SignedAngle(spiderChild.transform.position, target, spiderChild.transform.right);
+
             spiderChild.transform.position = moveTowardsPosition;
+
+            if (Vector3.Distance(spiderChild.transform.position, target) < 0.5f)
+            {
+                targetSet = false;
+                spiderChild.transform.up = transform.up;
+            }
         }
     }
 
@@ -35,5 +43,4 @@ public class WebHazard : MonoBehaviour
         target = targetPos + (transform.up * spiderChild.transform.localScale.z/2);
         targetSet = true;
     }
-
 }
