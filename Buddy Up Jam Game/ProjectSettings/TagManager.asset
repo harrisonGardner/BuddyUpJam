@@ -12,6 +12,7 @@ TagManager:
   - Checkpoint
   - WebHazard
   - CrumbleHazard
+  - PatrolSpider
   layers:
   - Default
   - TransparentFX
