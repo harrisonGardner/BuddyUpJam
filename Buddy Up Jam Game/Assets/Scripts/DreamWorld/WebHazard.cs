@@ -10,7 +10,6 @@ public class WebHazard : MonoBehaviour
 
     public float spiderMoveSpeed = 5f;
     private GameObject spiderChild;
-    private Vector3 initialPlane;
 
     public void Start()
     {
@@ -24,13 +23,10 @@ public class WebHazard : MonoBehaviour
         if (targetSet)
         {
             spiderChild.transform.right = spiderChild.transform.position - target;
-            //spiderChild.transform.localEulerAngles = new Vector3(90, spiderChild.transform.localEulerAngles.y, spiderChild.transform.localEulerAngles.z);
 
             Vector3 moveTowardsPosition = Vector3.MoveTowards(spiderChild.transform.position, target, spiderMoveSpeed * Time.deltaTime);
 
             float angleToTarget = Vector3.SignedAngle(spiderChild.transform.position, target, spiderChild.transform.right);
-            //spiderChild.transform.Rotate(new Vector3(0, 0, angleToTarget), Space.Self);
-            //spiderChild.transform.localEulerAngles = new Vector3(initialPlane.x, initialPlane.y, angleToTarget + 90);
 
             spiderChild.transform.position = moveTowardsPosition;
 
@@ -46,9 +42,5 @@ public class WebHazard : MonoBehaviour
     {
         target = targetPos + (transform.up * spiderChild.transform.localScale.z/2);
         targetSet = true;
-    }
-
-    public void GetRandomPathTarget()
-    { 
     }
 }
