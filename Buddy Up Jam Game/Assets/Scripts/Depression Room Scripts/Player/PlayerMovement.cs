@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        playerHeight = transform.localScale.y * 2;
+
         cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
