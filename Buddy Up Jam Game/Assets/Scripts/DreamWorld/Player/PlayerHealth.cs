@@ -49,5 +49,10 @@ public class PlayerHealth : MonoBehaviour
     {
         transform.position = lastCheckpoint;
         health = 100f;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+        rb.useGravity = true;
     }
 }

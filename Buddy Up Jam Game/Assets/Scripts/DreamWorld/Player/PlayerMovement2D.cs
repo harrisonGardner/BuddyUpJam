@@ -6,7 +6,6 @@ public class PlayerMovement2D : MonoBehaviour
 {
     public float acceleration = 5f;
     public float maxSpeed = 20f;
-    public float drag = 20f;
 
     private Rigidbody rb;
     
@@ -15,9 +14,9 @@ public class PlayerMovement2D : MonoBehaviour
     private float verticalInput;
 
     [Header("Ground Check")]
-    public float playerHeight;
+    private float playerHeight;
     public LayerMask whatIsGround;
-    public bool grounded;
+    private bool grounded;
 
     public float coyoteTime = 0.1f;
     private float coyoteTimer = 0f;
@@ -25,7 +24,7 @@ public class PlayerMovement2D : MonoBehaviour
     private bool jumpBuffer = false;
     public float jumpCooldown = 0.25f;
     private float jumpCooldownTimer = 0f;
-    public bool jumpApexReached = false;
+    private bool jumpApexReached = false;
 
     public float jumpHeight = 5f;
 
@@ -95,7 +94,6 @@ public class PlayerMovement2D : MonoBehaviour
         if (!jumpApexReached && coyoteTimer <= 0 && !grounded && rb.velocity.y < 0)
         {
             jumpApexReached = true;
-            Debug.Log("velocity negative: " + rb.velocity.y);
         }
         else if (!jumpApexReached && !grounded && Input.GetKeyUp(KeyCode.Space))
         {
@@ -116,4 +114,10 @@ public class PlayerMovement2D : MonoBehaviour
         rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y, rb.velocity.z);
     }
 
+    public void FreezePlayer()
+    {
+        rb.velocity = Vector3.zero;
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
 }
