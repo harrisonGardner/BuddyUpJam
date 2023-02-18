@@ -15,9 +15,15 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Checkpoint"))
+        GameObject trigger = other.gameObject;
+        if (trigger.CompareTag("Checkpoint"))
         {
             GetComponent<PlayerHealth>().lastCheckpoint = other.gameObject.transform.position;
+        }
+        else if (trigger.CompareTag("WebHazard"))
+        {
+            GetComponent<PlayerMovement2D>().FreezePlayer();
+            trigger.GetComponent<WebHazard>().SetTarget(other.ClosestPoint(transform.position));
         }
     }
 }

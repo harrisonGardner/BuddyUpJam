@@ -10,6 +10,7 @@ TagManager:
   - EnemyAttackTrigger
   - EnvironmentHazard
   - Checkpoint
+  - WebHazard
   layers:
   - Default
   - TransparentFX
