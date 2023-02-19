@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Interactable
+  - InteractionTextCanvas
+  - Enemy
+  - EnemyAttackTrigger
+  - EnvironmentHazard
+  - Checkpoint
+  - WebHazard
   layers:
   - Default
   - TransparentFX
@@ -18,7 +25,7 @@ TagManager:
   - whatIsGround
   - 
   - 
-  - 
+  - Screen 1
   - 
   - 
   - 

@@ -25,19 +25,22 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    GameObject cam;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        playerHeight = transform.localScale.y * 2;
+
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-
     }
 
     private void Update()
@@ -58,8 +61,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        //set player to look in the same direction as camera
+        transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0);
+
         // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
