@@ -11,6 +11,8 @@ TagManager:
   - EnvironmentHazard
   - Checkpoint
   - WebHazard
+  - CrumbleHazard
+  - PatrolSpider
   layers:
   - Default
   - TransparentFX
