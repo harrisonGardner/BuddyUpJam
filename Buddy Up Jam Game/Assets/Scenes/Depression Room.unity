@@ -5211,7 +5211,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9292453, g: 0.9930943, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 20
   m_Range: 43.044075
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5250,7 +5250,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5326,7 +5326,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9292453, g: 0.9930943, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 20
   m_Range: 43.044075
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5365,7 +5365,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -10900,7 +10900,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -12001,7 +12001,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9292453, g: 0.9930943, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 20
   m_Range: 43.044075
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12040,7 +12040,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -12934,7 +12934,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9292453, g: 0.9930943, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 20
   m_Range: 43.044075
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12973,7 +12973,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -14208,7 +14208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051861546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.787, y: 2.602, z: -15.772}
+  m_LocalPosition: {x: -6.699, y: 2.602, z: -16.024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14286,7 +14286,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
