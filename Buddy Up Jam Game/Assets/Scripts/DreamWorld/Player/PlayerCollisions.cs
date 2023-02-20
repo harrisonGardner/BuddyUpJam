@@ -29,5 +29,9 @@ public class PlayerCollisions : MonoBehaviour
             GetComponent<PlayerMovement2D>().FreezePlayer();
             trigger.GetComponent<WebHazard>().SetTarget(other.ClosestPoint(transform.position));
         }
+        else if (trigger.CompareTag("JumpBoost"))
+        {
+            GetComponent<PlayerMovement2D>().Jump(trigger.GetComponent<JumpBoost>().boostStrength);
+        }
     }
 }

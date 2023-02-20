@@ -26,6 +26,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (gameObject.transform.position.y < -50)
+        {
+            Die();
+        }
+    }
+
     public void Damage(float damageAmount)
     {
         health -= damageAmount;

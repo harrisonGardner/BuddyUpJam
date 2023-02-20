@@ -73,18 +73,12 @@ public class PlayerMovement2D : MonoBehaviour
 
         if ((!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space)))
         {
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-            jumpBuffer = true;
-            coyoteTimer = 0;
+            Jump(jumpHeight);
         }
         else if (doubleJumpEnabled && !doubleJumped && coyoteTimer <= 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(Vector3.up * jumpHeight * doubleJumpMultiplier, ForceMode.Impulse);
-            jumpBuffer = true;
+            Jump(jumpHeight * doubleJumpMultiplier);
             doubleJumped = true;
-            coyoteTimer = 0;
         }
 
         if (grounded)
@@ -119,6 +113,14 @@ public class PlayerMovement2D : MonoBehaviour
         }
 
         SpeedControl();
+    }
+
+    public void Jump(float power)
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        rb.AddForce(Vector3.up * power, ForceMode.Impulse);
+        jumpBuffer = true;
+        coyoteTimer = 0;
     }
 
     private void FixedUpdate()
