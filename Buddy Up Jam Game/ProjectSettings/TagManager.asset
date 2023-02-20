@@ -13,6 +13,7 @@ TagManager:
   - WebHazard
   - CrumbleHazard
   - PatrolSpider
+  - JumpBoost
   layers:
   - Default
   - TransparentFX
