@@ -3819,6 +3819,8 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpCooldown: 0.1
   jumpHeight: 50
+  doubleJumpEnabled: 1
+  doubleJumpMultiplier: 0.9
 --- !u!54 &2124837318
 Rigidbody:
   m_ObjectHideFlags: 0

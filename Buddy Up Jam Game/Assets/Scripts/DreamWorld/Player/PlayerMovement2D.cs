@@ -8,7 +8,7 @@ public class PlayerMovement2D : MonoBehaviour
     public float maxSpeed = 20f;
 
     private Rigidbody rb;
-    
+
 
     private float horizontalInput;
     private float verticalInput;
@@ -28,6 +28,11 @@ public class PlayerMovement2D : MonoBehaviour
 
     public float jumpHeight = 5f;
 
+    public bool doubleJumpEnabled = true;
+    private bool doubleJumped = false;
+    
+    [Tooltip("How powerful the double jump will be relative to the normal jump power")]
+    public float doubleJumpMultiplier = 0.5f;
     
 
     // Start is called before the first frame update
@@ -66,13 +71,25 @@ public class PlayerMovement2D : MonoBehaviour
                 coyoteTimer -= Time.deltaTime;
         }
 
-        if (!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space))
+        if ((!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space)))
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
             jumpBuffer = true;
             coyoteTimer = 0;
         }
+        else if (doubleJumpEnabled && !doubleJumped && coyoteTimer <= 0 && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            rb.AddForce(Vector3.up * jumpHeight * doubleJumpMultiplier, ForceMode.Impulse);
+            jumpBuffer = true;
+            doubleJumped = true;
+            coyoteTimer = 0;
+        }
+
+        if (grounded)
+            doubleJumped = false;
+
         if (jumpBuffer && !grounded)
         {
             jumpBuffer = false;
