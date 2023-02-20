@@ -31,7 +31,6 @@ public class InputRelaySource : MonoBehaviour
 
             OnCursorInput.Invoke(hitResult.textureCoord);
             Debug.Log(hitResult.textureCoord);
-            Debug.Log(hitResult.point);
         }
     }
 }
