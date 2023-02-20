@@ -31,8 +31,6 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
 
         Camera.main.transform.position = transform.GetChild(0).position;
         Camera.main.transform.rotation = transform.GetChild(0).rotation;
-
-        Debug.Log("Interact");
     }
 
     private void DeInteract()
@@ -44,7 +42,6 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
         interacting = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("DeInteract");
     }
 
     private void Update()
