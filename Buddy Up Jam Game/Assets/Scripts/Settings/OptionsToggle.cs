@@ -15,7 +15,7 @@ public class OptionsToggle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Unlock mouse
+            //Mouse lock and unlock
             if (Cursor.lockState == CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.None;
             else if(Cursor.lockState == CursorLockMode.None)
