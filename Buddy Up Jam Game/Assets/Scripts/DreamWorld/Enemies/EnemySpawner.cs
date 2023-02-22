@@ -23,10 +23,15 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnTimer <= 0)
         {
-            Debug.Log("Spane");
             spawnTimer = spawnDelay;
             GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.position = leftSpawn.transform.position;
+
+            int spawnLocation = Random.Range(0, 2);
+            enemy.transform.position = (spawnLocation == 0 ? rightSpawn.transform.position : leftSpawn.transform.position);
+            if (spawnLocation == 0)
+            {
+                enemy.GetComponent<Patrol>().ToggleDirection();
+            }
         }
         spawnTimer -= Time.deltaTime;
     }

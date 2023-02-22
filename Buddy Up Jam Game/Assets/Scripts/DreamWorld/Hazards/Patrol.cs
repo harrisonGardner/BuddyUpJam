@@ -10,15 +10,18 @@ public class Patrol : MonoBehaviour
     public float viewDistance;
     public float wallDetectDistance = 0.25f;
 
-    public bool rightStartDirection = false;
+    public bool leftStartDirection = false;
     private bool chasing = false;
+
+    public float lifetime = 10f;
+    private float lifeTimer = 0f;
 
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        transform.right *= (rightStartDirection? -1 : 1); 
+        transform.right *= (leftStartDirection ? -1 : 1); 
     }
 
     // Update is called once per frame
@@ -26,20 +29,37 @@ public class Patrol : MonoBehaviour
     {
         SpeedControl();
 
-        Ray playerRay = new Ray(transform.position, transform.right);
-        RaycastHit hit;
-        if (Physics.Raycast(playerRay, out hit, viewDistance))
+        if (lifeTimer < lifetime)
         {
-            if (hit.collider.gameObject.CompareTag("Player"))
-            {
-                chasing = true;
-            }
-            else if (Vector3.Distance(hit.point, transform.position) < transform.localScale.x + wallDetectDistance)
-            {
-                transform.right *= -1;
-                chasing = false;
-            }
+            lifeTimer += Time.deltaTime;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        //Ray playerRay = new Ray(transform.position, transform.right);
+        //RaycastHit hit;
+        //if (Physics.Raycast(playerRay, out hit, viewDistance))
+        //{
+        //    if (hit.collider.gameObject.CompareTag("Player"))
+        //    {
+        //        chasing = true;
+        //    }
+        //    //else if (Vector3.Distance(hit.point, transform.position) < transform.localScale.x + wallDetectDistance)
+        //    //{
+        //    //    transform.right *= -1;
+        //    //    chasing = false;
+        //    //}
+        //}
+    }
+
+    /// <summary>
+    /// Default direction is to the right
+    /// </summary>
+    public void ToggleDirection()
+    {
+        transform.right *= -1;
     }
 
     private void FixedUpdate()
@@ -53,11 +73,12 @@ public class Patrol : MonoBehaviour
         rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, rb.velocity.z);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().Damage(100f);
+            other.gameObject.GetComponent<PlayerHealth>().Damage(100f);
+
             chasing = false;
         }
     }

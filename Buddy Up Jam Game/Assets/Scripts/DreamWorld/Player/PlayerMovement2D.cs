@@ -33,6 +33,8 @@ public class PlayerMovement2D : MonoBehaviour
     
     [Tooltip("How powerful the double jump will be relative to the normal jump power")]
     public float doubleJumpMultiplier = 0.5f;
+
+    public GameObject platformController;
     
 
     // Start is called before the first frame update
@@ -60,6 +62,23 @@ public class PlayerMovement2D : MonoBehaviour
 
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.05f, whatIsGround);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight + 0.05f))
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                if (rb.velocity.y < 0)
+                {
+                    Destroy(hit.collider.gameObject);
+                    Jump(jumpHeight);
+                    doubleJumped = false;
+
+                    platformController.GetComponent<PlatformController>().RevealNextPlatform();
+                }
+            }
+        }
 
         if (grounded)
         {
