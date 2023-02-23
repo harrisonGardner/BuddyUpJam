@@ -16,6 +16,11 @@ public class Patrol : MonoBehaviour
     public float lifetime = 10f;
     private float lifeTimer = 0f;
 
+    public float attackKnockback = 5f;
+
+    public float invicibiltyTime = 0.25f;
+    private float invincibilityCooldown;
+
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -38,6 +43,10 @@ public class Patrol : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (invincibilityCooldown > 0)
+        {
+            invincibilityCooldown -= Time.deltaTime;
+        }
         //Ray playerRay = new Ray(transform.position, transform.right);
         //RaycastHit hit;
         //if (Physics.Raycast(playerRay, out hit, viewDistance))
@@ -73,11 +82,29 @@ public class Patrol : MonoBehaviour
         rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -speed, speed), rb.velocity.y, rb.velocity.z);
     }
 
+    /// <summary>
+    /// Attempts to kill the enemy
+    /// </summary>
+    /// <returns>Returns true if the kill was successful</returns>
+    public bool Kill()
+    {
+        if (invincibilityCooldown <= 0f)
+        {
+            Destroy(gameObject);
+            return true;
+        }
+
+        return false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerHealth>().Damage(100f);
+            invincibilityCooldown = invicibiltyTime;
+            //other.gameObject.transform.position += Vector3.up * 1f;
+            other.gameObject.GetComponent<PlayerHealth>().Damage(25f);
+            //other.gameObject.GetComponent<Rigidbody>().AddForce((Vector3.up + (rb.velocity.normalized * 115)).normalized * attackKnockback, ForceMode.Impulse);
 
             chasing = false;
         }

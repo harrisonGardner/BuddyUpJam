@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour
 
     public Vector3 lastCheckpoint;
 
+    public float invincibilityTime = 0.25f;
+    private float invincibilityTimer = 0f;
+
     private void Start()
     {
         lastCheckpoint = transform.position;
@@ -28,6 +31,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Update()
     {
+        if (invincibilityTimer > 0)
+            invincibilityTimer -= Time.deltaTime;
+
         if (gameObject.transform.position.y < -50)
         {
             Die();
@@ -36,8 +42,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(float damageAmount)
     {
+        invincibilityTimer = invincibilityTime;
         health -= damageAmount;
         HealthChangeChecks();
+    }
+
+    public bool IsInvincible()
+    {
+        return invincibilityTimer > 0;
     }
 
     //When the amount of health is changed check for things like death
