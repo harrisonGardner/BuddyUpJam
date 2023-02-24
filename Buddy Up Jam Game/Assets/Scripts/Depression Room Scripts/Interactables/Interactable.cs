@@ -8,6 +8,9 @@ public class Interactable : MonoBehaviour
     //public string subText = "About the item stuff goes here";
 
     public List<string> interactionTextList = new List<string>();
+    public List<string> interactionTextListPostMessages = new List<string>();
+
+    public int disappearAfterLevel = 4;
 
     private IInteraction interaction;
     // Start is called before the first frame update
@@ -22,6 +25,14 @@ public class Interactable : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        if (LevelTracker.GetLevel() >= disappearAfterLevel)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void Interact()
     {
         if(interaction != null)
@@ -32,10 +43,11 @@ public class Interactable : MonoBehaviour
 
     public string GetInteractionText(int level)
     {
-        if (level < interactionTextList.Count && level >= 0)
-        {
+        level = Mathf.Clamp(level, 0, interactionTextList.Count - 1);
+
+        if (interactionTextListPostMessages.Count == interactionTextList.Count)
+            return (LevelTracker.messagesRead ? (interactionTextListPostMessages[level] != "" ? interactionTextListPostMessages[level] : interactionTextList[level] ) : interactionTextList[level]); // I should really stop nesting ternary operators
+        else
             return interactionTextList[level];
-        }
-        return interactionTextList[interactionTextList.Count - 1];
     }
 }

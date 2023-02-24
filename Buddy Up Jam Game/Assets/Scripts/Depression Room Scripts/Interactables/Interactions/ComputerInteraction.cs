@@ -5,6 +5,7 @@ using UnityEngine;
 public class ComputerInteraction : MonoBehaviour, IInteraction
 {
     private bool interacting = false;
+    private bool interactionCalledOnThisFrame = false;
     private GameObject player;
 
     private PlayerMovement playerMovement;
@@ -31,6 +32,7 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
 
         Camera.main.transform.position = transform.GetChild(0).position;
         Camera.main.transform.rotation = transform.GetChild(0).rotation;
+        interactionCalledOnThisFrame = true;
     }
 
     private void DeInteract()
@@ -42,16 +44,25 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
         interacting = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        interactionCalledOnThisFrame = true;
+        LevelTracker.messagesRead = true;
+    }
+
+    private void Awake()
+    {
+        LevelTracker.messagesRead = false;
     }
 
     private void Update()
     {
-        if (interacting)
+        if (interacting && !interactionCalledOnThisFrame)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 DeInteract();
             }
         }
+
+        interactionCalledOnThisFrame = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public static class LevelTracker
 {
     private static int currentLevel = 0;
+    public static bool messagesRead = false;
 
     public static void SetLevel(int level)
     {
