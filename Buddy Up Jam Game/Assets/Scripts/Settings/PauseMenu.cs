@@ -8,6 +8,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    private PlayerCam playerCam;
+
+    private void Start()
+    {
+        Camera.main.TryGetComponent<PlayerCam>(out playerCam);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +37,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        playerCam.enabled = true;
     }
 
     void Pause()
@@ -38,6 +46,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+
+        playerCam.enabled = false;
     }
 
     public void LoadMenu()

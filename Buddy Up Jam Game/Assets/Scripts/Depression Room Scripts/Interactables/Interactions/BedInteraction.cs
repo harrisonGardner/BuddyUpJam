@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BedInteraction : MonoBehaviour, IInteraction
@@ -32,6 +33,7 @@ public class BedInteraction : MonoBehaviour, IInteraction
         else if(fadeDone)
         {
             //Transition scene or whatever else
+            SceneManager.LoadScene("Dream World", LoadSceneMode.Single);
         }
     }
 }
