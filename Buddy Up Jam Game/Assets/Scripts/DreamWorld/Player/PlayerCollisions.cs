@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class PlayerCollisions : MonoBehaviour
         }
         else if (trigger.CompareTag("Goal"))
         {
-            Debug.Log("Transition back to depression room");
+            LevelTracker.SetLevel(LevelTracker.GetLevel() + 1);
+            SceneManager.LoadScene("Depression Room", LoadSceneMode.Single);
         }
     }
 }
