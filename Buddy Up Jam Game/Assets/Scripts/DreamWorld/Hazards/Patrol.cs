@@ -7,7 +7,7 @@ public class Patrol : MonoBehaviour
     public float patrolSpeed = 5f;
     public float chaseSpeed = 10f;
 
-    public float viewDistance;
+    public float viewDistance = 0.3f;
     public float wallDetectDistance = 0.25f;
 
     public bool leftStartDirection = false;
@@ -22,6 +22,9 @@ public class Patrol : MonoBehaviour
     private float invincibilityCooldown;
 
     private Rigidbody rb;
+
+    //The amount of time after spawning before it will being to try and detect walls
+    private float wallDetectDelay = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,33 +37,43 @@ public class Patrol : MonoBehaviour
     {
         SpeedControl();
 
-        if (lifeTimer < lifetime)
-        {
-            lifeTimer += Time.deltaTime;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (lifeTimer < lifetime)
+        //{
+        //    lifeTimer += Time.deltaTime;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
 
         if (invincibilityCooldown > 0)
         {
             invincibilityCooldown -= Time.deltaTime;
         }
-        //Ray playerRay = new Ray(transform.position, transform.right);
-        //RaycastHit hit;
-        //if (Physics.Raycast(playerRay, out hit, viewDistance))
-        //{
-        //    if (hit.collider.gameObject.CompareTag("Player"))
-        //    {
-        //        chasing = true;
-        //    }
-        //    //else if (Vector3.Distance(hit.point, transform.position) < transform.localScale.x + wallDetectDistance)
-        //    //{
-        //    //    transform.right *= -1;
-        //    //    chasing = false;
-        //    //}
-        //}
+
+        if (wallDetectDelay > 0)
+        {
+            wallDetectDelay -= Time.deltaTime;
+        }
+        else
+        {   
+            Ray wallRay = new Ray(transform.position, transform.right);
+            RaycastHit hit;
+            if (Physics.Raycast(wallRay, out hit, wallDetectDistance))
+            {
+                if (hit.collider.gameObject.CompareTag("TriggerWall"))
+                {
+                    transform.right *= -1;
+                }
+            }
+        }
+
+        if (Mathf.Abs(transform.position.x) > 100f)
+        {
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().OutOfBoundsSpider();
+            Kill();
+        }
+        
     }
 
     /// <summary>
@@ -90,6 +103,7 @@ public class Patrol : MonoBehaviour
     {
         if (invincibilityCooldown <= 0f)
         {
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpiderKilled();
             Destroy(gameObject);
             return true;
         }
