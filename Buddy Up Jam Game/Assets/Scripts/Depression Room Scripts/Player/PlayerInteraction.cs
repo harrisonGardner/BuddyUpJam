@@ -26,6 +26,11 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+            LevelTracker.SetLevel(LevelTracker.GetLevel() + 1);
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            LevelTracker.SetLevel(LevelTracker.GetLevel() - 1);
+
         RaycastHit hit;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactDistance))
@@ -47,10 +52,12 @@ public class PlayerInteraction : MonoBehaviour
                 interactionTextCanvas.transform.localScale = new Vector3(scale, scale, scale);
 
                 //First child is main text, second child is sub text
-                interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().mainText;
-                interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().subText;
+                //interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().mainText;
+                //interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().subText;
 
-                if(Input.GetKeyDown(KeyCode.E))
+                interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().GetInteractionText(LevelTracker.GetLevel());
+
+                if (Input.GetKeyDown(KeyCode.E))
                     highlightedObject.GetComponent<Interactable>().Interact();
 
                 lastHighlighted = hit.collider.gameObject;

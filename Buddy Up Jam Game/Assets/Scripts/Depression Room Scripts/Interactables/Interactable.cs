@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public string mainText = "What the item is";
-    public string subText = "About the item stuff goes here";
+    //public string mainText = "What the item is";
+    //public string subText = "About the item stuff goes here";
+
+    public List<string> interactionTextList = new List<string>();
 
     private IInteraction interaction;
     // Start is called before the first frame update
@@ -26,5 +28,14 @@ public class Interactable : MonoBehaviour
         {
             interaction.Interact();
         }
+    }
+
+    public string GetInteractionText(int level)
+    {
+        if (level < interactionTextList.Count && level >= 0)
+        {
+            return interactionTextList[level];
+        }
+        return interactionTextList[interactionTextList.Count - 1];
     }
 }
