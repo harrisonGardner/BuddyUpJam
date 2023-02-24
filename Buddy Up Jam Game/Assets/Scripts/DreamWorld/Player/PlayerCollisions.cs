@@ -33,5 +33,9 @@ public class PlayerCollisions : MonoBehaviour
         {
             GetComponent<PlayerMovement2D>().Jump(trigger.GetComponent<JumpBoost>().boostStrength);
         }
+        else if (trigger.CompareTag("Goal"))
+        {
+            Debug.Log("Transition back to depression room");
+        }
     }
 }

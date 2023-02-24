@@ -35,11 +35,13 @@ public class PlayerMovement2D : MonoBehaviour
     public float doubleJumpMultiplier = 0.5f;
 
     public GameObject platformController;
-    
+
+    private PlayerHealth health;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody>();
         playerHeight = gameObject.transform.localScale.y;
     }
@@ -47,11 +49,6 @@ public class PlayerMovement2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            GetComponent<PlayerHealth>().Damage(100);
-        }
-
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -59,23 +56,31 @@ public class PlayerMovement2D : MonoBehaviour
         {
             rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
         }
+        else
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0f, (horizontalInput == 1 ? 180f : 0f), 0f)), 720f * Time.deltaTime);
+        }
 
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.05f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, 0.05f, whatIsGround);
+
+        Debug.DrawRay(transform.position + (Vector3.down * 0.05f), Vector3.down, Color.red, 0.5f, false);
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight + 0.05f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 if (rb.velocity.y < 0)
                 {
-                    Destroy(hit.collider.gameObject);
-                    Jump(jumpHeight);
-                    doubleJumped = false;
+                    if (hit.collider.gameObject.GetComponent<Patrol>().Kill())
+                    {
+                        Jump(jumpHeight);
+                        doubleJumped = false;
 
-                    platformController.GetComponent<PlatformController>().RevealNextPlatform();
+                        platformController.GetComponent<PlatformController>().RevealNextPlatform();
+                    }
                 }
             }
         }
