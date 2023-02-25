@@ -28,6 +28,10 @@ public class BedInteraction : MonoBehaviour, IInteraction
         {
             fadeTimer += Time.deltaTime;
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeTimer/fadeSpeed);
+
+            SoundManager.Instance.ChangeEffectsVolume(1 - fadeTimer/fadeSpeed);
+            SoundManager.Instance.ChangeMusicVolume(1 - fadeTimer/fadeSpeed);
+
             if (fadeTimer >= fadeSpeed)
             {
                 fadeDone = true;
