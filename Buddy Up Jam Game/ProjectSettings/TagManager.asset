@@ -17,6 +17,8 @@ TagManager:
   - Goal
   - EnemySpawner
   - TriggerWall
+  - EffectsSources
+  - MusicSources
   layers:
   - Default
   - TransparentFX

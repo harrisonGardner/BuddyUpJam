@@ -17,8 +17,8 @@ public class EnemySpawner : MonoBehaviour
 
     public int amountToSpawn = 5;
     private int amountSpawned = 0;
-    
 
+    public MusicSwap musicSwap;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +50,10 @@ public class EnemySpawner : MonoBehaviour
     public void SpiderKilled()
     {
         spidersAlive--;
+        if (amountToSpawn == amountSpawned && spidersAlive == 0)
+        {
+                musicSwap.Swap();
+        }
     }
 
     public void OutOfBoundsSpider()

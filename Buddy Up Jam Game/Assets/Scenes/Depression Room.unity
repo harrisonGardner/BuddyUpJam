@@ -629,6 +629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 0}
   _effectsSource: {fileID: 1097408553}
+  musicSources: []
+  effectsSources: []
 --- !u!4 &234598719
 Transform:
   m_ObjectHideFlags: 0
@@ -642,7 +644,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &245269966
 GameObject:
@@ -5554,7 +5556,7 @@ RectTransform:
   m_Children:
   - {fileID: 1164043269}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11191,15 +11193,14 @@ MonoBehaviour:
   interactionTextList:
   - '[message notification noise] ....Guess I should see if there''s an emergency.'
   - '[message notification noise] ...I guess I should risk it and check my messages.'
-  - I should respond to my messages.
-  - '[message notification noise] Still a little nervous about checking my messages
-    but... I just have to do it like ripping off a bandage. '
+  - 'Still a little nervous about checking my messages but... I just have to do it
+    like ripping off a bandage. '
+  - '[message notification noise] Hmm?'
   interactionTextListPostMessages:
   - I'm suddenly so exhausted.
   - That took a lot out of me.
-  - I honestly felt... really good about that conversation... but god, I'm so tired
-    now.
-  - That was easier than I thought.
+  - That was actually... nice? But I'm genuinely so tired now.
+  - 
   disappearAfterLevel: 4
 --- !u!114 &471641707
 MonoBehaviour:
@@ -11521,7 +11522,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526754237}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.869673, y: 3.1074944, z: 11.755964}
@@ -12259,7 +12260,7 @@ Transform:
   - {fileID: 104235908}
   - {fileID: 1572101949}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639881527
 GameObject:
@@ -12867,7 +12868,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751219732
 GameObject:
@@ -13665,7 +13666,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b0b90baccd288104dae88a2ec5e33660, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13756,13 +13757,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968207104}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20.24, y: 11.39, z: -5.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1852899837}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &984798802
 GameObject:
@@ -13926,7 +13927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009191633}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.11, y: 16.56, z: -8.51}
+  m_LocalPosition: {x: -0.11, y: 17.22, z: -8.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14184,7 +14185,7 @@ MonoBehaviour:
   - I need a nap. Everything else can wait.
   - I'm suddenly so sleepy... a quick nap won't hurt.
   - 'I think it''s time for my brain to recover for a bit. '
-  - Nah, not right now.
+  - Nahhhh.
   disappearAfterLevel: 4
 --- !u!1 &1065806336
 GameObject:
@@ -14390,7 +14391,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097240490}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.319867, y: 1, z: 9.487323}
@@ -14515,13 +14516,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097408552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1852899837}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111442312
 GameObject:
@@ -15587,6 +15588,7 @@ GameObject:
   - component: {fileID: 1440322082}
   - component: {fileID: 1440322081}
   - component: {fileID: 1440322080}
+  - component: {fileID: 1440322084}
   m_Layer: 5
   m_Name: FadeTransitionCanvas
   m_TagString: Untagged
@@ -15676,6 +15678,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1440322084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440322079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb3ab663926abd43bb9a0bd112266e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 2.5
 --- !u!1 &1460682588
 GameObject:
   m_ObjectHideFlags: 0
@@ -16892,7 +16907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734625578}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -14.05, y: 18.17, z: 10}
+  m_LocalPosition: {x: -14.05, y: 17.65, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17284,6 +17299,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1834283846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1834283847}
+  m_Layer: 0
+  m_Name: MusicSources
+  m_TagString: MusicSources
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1834283847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834283846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1841503210
 GameObject:
   m_ObjectHideFlags: 0
@@ -17393,6 +17439,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841503210}
   m_CullTransparentMesh: 1
+--- !u!1 &1852899836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852899837}
+  m_Layer: 0
+  m_Name: EffectsSources
+  m_TagString: EffectsSources
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1852899837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852899836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1097408554}
+  - {fileID: 968207106}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903875949
 GameObject:
   m_ObjectHideFlags: 0
@@ -22475,9 +22554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2619216ff8dddda428aace7cdc143fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 5
-  fadeTimer: 0
-  fadeImage: {fileID: 896237520}
 --- !u!4 &6266848849772099255
 Transform:
   m_ObjectHideFlags: 0
@@ -22646,7 +22722,7 @@ MonoBehaviour:
   - Got a bunch of emails from the university but... that can wait.
   - I've got work to catch up on but... I can do those after a round of battle royale.
   - '... '
-  - I'm a little scared but I should probably email my professors as soon as possible.
+  - Oh I have to remember to follow up with the emails from my advisors.
   interactionTextListPostMessages:
   - Yeah, I can't think about that right now.
   - I'll worry about all this later.
@@ -23635,7 +23711,7 @@ MonoBehaviour:
   - Yeah, I can't think about that right now.
   - I'll worry about all this later.
   - I'll spend some time thinking about everything in the morning.
-  - I should think about what to wear before I go out.
+  - I look okay in this outfit right?
   disappearAfterLevel: 4
 --- !u!65 &7418367975478679008
 BoxCollider:
@@ -24478,7 +24554,11 @@ MonoBehaviour:
   - No point in opening it if it's dark out.
   - 
   - It's nice and sunny outside.
-  interactionTextListPostMessages: []
+  interactionTextListPostMessages:
+  - Yeah, I can't think about that right now.
+  - I'll worry about all this later.
+  - I'll spend some time thinking about everything in the morning.
+  - I won't be able to see them coming from here.
   disappearAfterLevel: 4
 --- !u!4 &8960224892488473363
 Transform:
