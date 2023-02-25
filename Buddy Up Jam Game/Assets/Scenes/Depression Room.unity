@@ -11191,15 +11191,14 @@ MonoBehaviour:
   interactionTextList:
   - '[message notification noise] ....Guess I should see if there''s an emergency.'
   - '[message notification noise] ...I guess I should risk it and check my messages.'
-  - I should respond to my messages.
-  - '[message notification noise] Still a little nervous about checking my messages
-    but... I just have to do it like ripping off a bandage. '
+  - 'Still a little nervous about checking my messages but... I just have to do it
+    like ripping off a bandage. '
+  - '[message notification noise] Hmm?'
   interactionTextListPostMessages:
   - I'm suddenly so exhausted.
   - That took a lot out of me.
-  - I honestly felt... really good about that conversation... but god, I'm so tired
-    now.
-  - That was easier than I thought.
+  - That was actually... nice? But I'm genuinely so tired now.
+  - 
   disappearAfterLevel: 4
 --- !u!114 &471641707
 MonoBehaviour:
@@ -11521,7 +11520,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526754237}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.869673, y: 3.1074944, z: 11.755964}
@@ -13926,7 +13925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009191633}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.11, y: 16.56, z: -8.51}
+  m_LocalPosition: {x: -0.11, y: 17.22, z: -8.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14184,7 +14183,7 @@ MonoBehaviour:
   - I need a nap. Everything else can wait.
   - I'm suddenly so sleepy... a quick nap won't hurt.
   - 'I think it''s time for my brain to recover for a bit. '
-  - Nah, not right now.
+  - Nahhhh.
   disappearAfterLevel: 4
 --- !u!1 &1065806336
 GameObject:
@@ -14390,7 +14389,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097240490}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.319867, y: 1, z: 9.487323}
@@ -16892,7 +16891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734625578}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -14.05, y: 18.17, z: 10}
+  m_LocalPosition: {x: -14.05, y: 17.65, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22475,7 +22474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2619216ff8dddda428aace7cdc143fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 5
+  fadeSpeed: 2.5
   fadeTimer: 0
   fadeImage: {fileID: 896237520}
 --- !u!4 &6266848849772099255
@@ -22646,7 +22645,7 @@ MonoBehaviour:
   - Got a bunch of emails from the university but... that can wait.
   - I've got work to catch up on but... I can do those after a round of battle royale.
   - '... '
-  - I'm a little scared but I should probably email my professors as soon as possible.
+  - Oh I have to remember to follow up with the emails from my advisors.
   interactionTextListPostMessages:
   - Yeah, I can't think about that right now.
   - I'll worry about all this later.
@@ -23635,7 +23634,7 @@ MonoBehaviour:
   - Yeah, I can't think about that right now.
   - I'll worry about all this later.
   - I'll spend some time thinking about everything in the morning.
-  - I should think about what to wear before I go out.
+  - I look okay in this outfit right?
   disappearAfterLevel: 4
 --- !u!65 &7418367975478679008
 BoxCollider:
@@ -24478,7 +24477,11 @@ MonoBehaviour:
   - No point in opening it if it's dark out.
   - 
   - It's nice and sunny outside.
-  interactionTextListPostMessages: []
+  interactionTextListPostMessages:
+  - Yeah, I can't think about that right now.
+  - I'll worry about all this later.
+  - I'll spend some time thinking about everything in the morning.
+  - I won't be able to see them coming from here.
   disappearAfterLevel: 4
 --- !u!4 &8960224892488473363
 Transform:
