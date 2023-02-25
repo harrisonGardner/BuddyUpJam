@@ -38,34 +38,7 @@ public class PlayerCollisions : MonoBehaviour
         else if (trigger.CompareTag("Goal"))
         {
             LevelTracker.SetLevel(LevelTracker.GetLevel() + 1);
-            fadeToBlack = true;
-        }
-    }
-
-    private bool fadeToBlack = false, fadeDone = false;
-    private float fadeTimer = 0f;
-    public float fadeSpeed = 2.5f;
-    public Image fadeImage;
-
-    private void Update()
-    {
-        if (fadeToBlack && !fadeDone)
-        {
-            fadeTimer += Time.deltaTime;
-            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeTimer / fadeSpeed);
-
-            SoundManager.Instance.ChangeEffectsVolume(1 - fadeTimer / fadeSpeed);
-            SoundManager.Instance.ChangeMusicVolume(1 - fadeTimer / fadeSpeed);
-
-            if (fadeTimer >= fadeSpeed)
-            {
-                fadeDone = true;
-            }
-        }
-        else if (fadeDone)
-        {
-            //Transition scene or whatever else
-            SceneManager.LoadScene("Depression Room", LoadSceneMode.Single);
+            SceneFade.Instance.SceneTransition("Depression Room");
         }
     }
 }

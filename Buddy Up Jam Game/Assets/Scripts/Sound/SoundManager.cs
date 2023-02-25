@@ -15,6 +15,10 @@ public class SoundManager : MonoBehaviour
     private float effectsVolume = 1f;
     private float musicVolume = 1f;
 
+    private bool fadingIn = true;
+    private float fadeInTime = 2.5f;
+    private float fadeInTimer = 2.5f;
+
     void Awake()
     {
         if (Instance == null)
@@ -36,7 +40,27 @@ public class SoundManager : MonoBehaviour
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Scene Loaded");
+
+        fadingIn = true;
+        fadeInTimer = 0f;
+
         FindSources();
+    }
+
+    private void Update()
+    {
+        if (fadingIn)
+        {
+            fadeInTimer += Time.deltaTime;
+
+            ChangeEffectsVolume(fadeInTimer/fadeInTime);
+            ChangeMusicVolume(fadeInTimer/fadeInTime);
+
+            if (fadeInTimer >= fadeInTime)
+            {
+                fadingIn = false;
+            }
+        }
     }
 
     private void FindSources()
