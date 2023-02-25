@@ -15,8 +15,11 @@ public class BedInteraction : MonoBehaviour, IInteraction
 
     public void Interact()
     {
-        fadeToBlack = true;
-        fadeTimer = 0f;
+        if (LevelTracker.messagesRead && !fadeToBlack)
+        {
+            fadeToBlack = true;
+            fadeTimer = 0f;
+        }
     }
 
     private void Update()
