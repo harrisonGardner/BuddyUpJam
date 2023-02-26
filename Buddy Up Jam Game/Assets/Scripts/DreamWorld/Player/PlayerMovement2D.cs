@@ -68,7 +68,7 @@ public class PlayerMovement2D : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.15f))
         {
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
@@ -79,7 +79,9 @@ public class PlayerMovement2D : MonoBehaviour
                         Jump(jumpHeight);
                         doubleJumped = false;
 
-                        platformController.GetComponent<PlatformController>().RevealNextPlatform();
+                        health.ActivateInvincibility(0.2f);
+
+                        platformController.GetComponent<PlatformController>().TryRevealNextPlatform();
                     }
                 }
             }

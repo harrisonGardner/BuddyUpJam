@@ -3677,6 +3677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platforms: []
+  spawner: {fileID: 1911555103}
 --- !u!4 &1144924346
 Transform:
   m_ObjectHideFlags: 0
@@ -5513,7 +5514,9 @@ MonoBehaviour:
   rightSpawn: {fileID: 766270189}
   spawnRate: 1
   maxAlive: 2
+  spidersAlive: 0
   amountToSpawn: 5
+  amountSpawned: 0
   musicSwap: {fileID: 679492622}
   spiderMessages:
   - Nobody likes you.
@@ -5749,6 +5752,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935082092}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1940756054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1940756056}
+  - component: {fileID: 1940756055}
+  m_Layer: 0
+  m_Name: LevelInformation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1940756055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940756054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d282c8ea8763f479c1d728ebf5c045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dreamLevels:
+  - {fileID: 11400000, guid: ff64dee57afa7934f8e2ec38e8f3d430, type: 2}
+  - {fileID: 11400000, guid: 33dcfef85032d554480cba5a4ce87075, type: 2}
+  - {fileID: 11400000, guid: 6fa520128a2368f44bb8e2a94b83ab87, type: 2}
+--- !u!4 &1940756056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940756054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119057534
 GameObject:
   m_ObjectHideFlags: 0

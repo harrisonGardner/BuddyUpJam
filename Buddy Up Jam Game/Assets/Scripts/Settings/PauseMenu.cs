@@ -18,6 +18,9 @@ public class PauseMenu : MonoBehaviour
     public Button optionsBackButton;
     public Button quitButton;
 
+    public Toggle arachnophobiaButton;
+    public Toggle triggerButton;
+
     private PlayerCam playerCam;
 
     private void Start()
@@ -91,7 +94,6 @@ public class PauseMenu : MonoBehaviour
     void OpenOptions()
     {
         optionsMenu.SetActive(true);
-        Debug.Log("Open");
     }
 
     void CloseOptions()

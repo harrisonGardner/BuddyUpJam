@@ -7,6 +7,8 @@ public class PlatformController : MonoBehaviour
     public List<GameObject> platforms = new List<GameObject>();
     int pointer = 0;
 
+    public EnemySpawner spawner;
+
     public void Start()
     {
         //Get list of platforms
@@ -16,12 +18,15 @@ public class PlatformController : MonoBehaviour
         }
     }
 
-    public void RevealNextPlatform()
+    public void TryRevealNextPlatform()
     {
-        if (pointer < platforms.Count)
+        if ((spawner.amountSpawned - spawner.spidersAlive) >= (spawner.amountToSpawn / platforms.Count) * (pointer + 1))
         {
-            platforms[pointer].GetComponent<Platform>().RevealPlatform();
-            pointer++;
+            if (pointer < platforms.Count)
+            {
+                platforms[pointer].GetComponent<Platform>().RevealPlatform();
+                pointer++;
+            }
         }
     }
 }
