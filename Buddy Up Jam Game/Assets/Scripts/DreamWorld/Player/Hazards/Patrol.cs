@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Patrol : MonoBehaviour
@@ -21,6 +22,10 @@ public class Patrol : MonoBehaviour
     public float invicibiltyTime = 0.25f;
     private float invincibilityCooldown;
 
+    public GameObject textCanvas;
+    public Vector3 textCanvasOffset;
+    public TextMeshProUGUI spiderMessageText;
+
     private Rigidbody rb;
 
     //The amount of time after spawning before it will being to try and detect walls
@@ -29,7 +34,9 @@ public class Patrol : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        transform.right *= (leftStartDirection ? -1 : 1); 
+        transform.right *= (leftStartDirection ? -1 : 1);
+        textCanvas.transform.parent = null;
+        textCanvas.transform.right = Vector3.right;
     }
 
     // Update is called once per frame
@@ -73,7 +80,8 @@ public class Patrol : MonoBehaviour
             GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().OutOfBoundsSpider();
             Kill();
         }
-        
+
+        textCanvas.transform.position = transform.position + new Vector3(textCanvasOffset.x * transform.right.x, textCanvasOffset.y, textCanvasOffset.z);
     }
 
     /// <summary>
@@ -104,6 +112,7 @@ public class Patrol : MonoBehaviour
         if (invincibilityCooldown <= 0f)
         {
             GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().SpiderKilled();
+            Destroy(textCanvas);
             Destroy(gameObject);
             return true;
         }

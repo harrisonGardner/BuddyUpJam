@@ -162,7 +162,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4235344214017818178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
   m_LocalScale: {x: 0.08416524, y: 0.2671234, z: 0.12958914}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -524,6 +524,9 @@ MonoBehaviour:
   lifetime: 10
   attackKnockback: 200
   invicibiltyTime: 0.25
+  textCanvas: {fileID: 4235344214017818178}
+  textCanvasOffset: {x: 1.3, y: 1.25, z: 0.45}
+  spiderMessageText: {fileID: 1791673375483815891}
 --- !u!1 &7545982421567148848
 GameObject:
   m_ObjectHideFlags: 0
