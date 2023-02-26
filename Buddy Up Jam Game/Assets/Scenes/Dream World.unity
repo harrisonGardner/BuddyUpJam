@@ -516,6 +516,9 @@ MonoBehaviour:
   lifetime: 10
   attackKnockback: 5
   invicibiltyTime: 0.25
+  textCanvas: {fileID: 0}
+  textCanvasOffset: {x: 0, y: 0, z: 0}
+  spiderMessageText: {fileID: 0}
 --- !u!54 &148657681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5512,6 +5515,129 @@ MonoBehaviour:
   maxAlive: 2
   amountToSpawn: 5
   musicSwap: {fileID: 679492622}
+  spiderMessages:
+  - Nobody likes you.
+  - You're worthless.
+  - You'll never amount to anything.
+  - You're useless.
+  - Everyone is lying to you.
+  - You can't do anything right.
+  - You're disgusting.
+  - You should be ashamed.
+  - You're the worst.
+  - How could anyone like hanging out with you?
+  - You're failing at life.
+  - Everyone hates you.
+  - You shouldn't even try.
+  - No one likes anything about you.
+  - You're so stupid.
+  - You don't deserve to be happy.
+  - Bad things happen to you because you deserve it.
+  - Your life will always fall apart.
+  - You don't deserve to love yourself.
+  - You're not smart enough to do anything.
+  - You have nothing to offer anyone.
+  - You're a failure.
+  - You should just disappear.
+  - You're worth less than nothing.
+  - People don't like you.
+  - You have no talents.
+  - You don't deserve anything good in life.
+  - You're ugly.
+  - You look horrible.
+  - People are always going to laugh at you.
+  - You'll never be better than this.
+  - You're awful.
+  - Everyone else is happier than you.
+  - Everyone else looks better than you.
+  - You're destined to be depressed.
+  - Everyone thinks you're gross.
+  - You suck at everything.
+  - You'll never be able to do better than this.
+  - You're a loser.
+  - You have no power to change.
+  - You're lazy.
+  - You don't deserve happiness.
+  - Just give up.
+  - You hate everyone anyway.
+  - You'll never follow through.
+  - People are talking about you behind your back.
+  - You can't compete with anyone.
+  - You'll never be at their level.
+  - Nobody wants your opinions.
+  - Everyone is judging you.
+  - You're such a loner.
+  - You don't deserve to be loved.
+  - No one will ever love you.
+  - You're going to die alone.
+  - It's too late to change anything.
+  - Your life is hopeless.
+  - No one would miss you if you were gone.
+  - Nothing you do matters.
+  - It's a waste of time to try and be better.
+  - Everyone thinks you're lazy.
+  - You can't even finish one task.
+  - Society is better off without you.
+  - You're not normal.
+  - You're an inconvenience to others.
+  - You're an embarassment.
+  - Your family is ashamed of you.
+  - No one cares about you.
+  - You're a burden to everyone.
+  - This is just who you are now.
+  - No one wants to listen to you.
+  - You should just isolate yourself.
+  - You never have anything positive to say.
+  - There's no point.
+  - Your feelings are invalid.
+  - You're broken.
+  - Nothing matters.
+  - You should skip class.
+  - You should just sleep.
+  - You should drop out of school.
+  - No one understands how you feel.
+  - No one values your existence.
+  - Your homework is overdue.
+  - Your email inbox is filling up.
+  - Your tuition is due.
+  - Your housemates never see you.
+  - Your family hasn't heard from you.
+  - You have unread messages.
+  - You haven't left the house in a long time.
+  - You're napping again.
+  - Trash is piling up in your room.
+  - Your unfinished work is adding up.
+  - You haven't changed your outfit in a while.
+  - Your hair is getting dirty.
+  - You're so tired.
+  - You aren't showering regularly.
+  - Your professors don't know what you're going through.
+  - You have cavities.
+  - You just want to stay in bed.
+  - You're exhausted.
+  - You're struggling.
+  - You just want to sit and play games.
+  - You haven't been out in the sun.
+  - You're overwhelmed.
+  - You have a hard time getting out of bed.
+  - You're not sleeping well.
+  - You just want to stay home.
+  - You don't want to talk to anyone.
+  - You've been snacking to cope.
+  - You haven't been drinking water.
+  - You haven't done the laundry.
+  - There's so much to clean.
+  - Too many things are happening at once.
+  - Life is moving too fast.
+  - Time is ticking.
+  - Everything takes too much effort.
+  - The days are blending together.
+  - Life feels empty.
+  - Everything is so hard.
+  - The years keep coming and they don't stop coming.
+  - You don't know what to do next.
+  - It's difficult to find the brightside.
+  - The glass is half empty.
 --- !u!1 &1935082092
 GameObject:
   m_ObjectHideFlags: 0

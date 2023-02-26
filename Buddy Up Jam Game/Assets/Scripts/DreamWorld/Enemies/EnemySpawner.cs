@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
 
     public MusicSwap musicSwap;
 
+    public List<string> spiderMessages = new List<string>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnTimer = spawnRate;
             GameObject enemy = Instantiate(enemyPrefab);
+            enemy.GetComponent<Patrol>().spiderMessageText.text = spiderMessages[Random.Range(0, spiderMessages.Count)];
 
             int spawnLocation = Random.Range(0, 2);
             enemy.transform.position = (spawnLocation == 0 ? rightSpawn.transform.position : leftSpawn.transform.position);
