@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityTime = 0.25f;
     private float invincibilityTimer = 0f;
 
+    public float damageFlashInterval = 0.25f;
+
     private void Start()
     {
         lastCheckpoint = transform.position;
@@ -32,7 +34,22 @@ public class PlayerHealth : MonoBehaviour
     public void Update()
     {
         if (invincibilityTimer > 0)
+        {
+            if ((int)(invincibilityTimer/damageFlashInterval) % 2f == 1)
+            {
+                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            }
+            else
+            {
+                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            }
+
             invincibilityTimer -= Time.deltaTime;
+        }
+        else
+        {
+            transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        }
 
         if (gameObject.transform.position.y < -50)
         {

@@ -4253,6 +4253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastCheckpoint: {x: 0, y: 0, z: 0}
   invincibilityTime: 1
+  damageFlashInterval: 0.1
 --- !u!114 &1404907403
 MonoBehaviour:
   m_ObjectHideFlags: 0
