@@ -59,9 +59,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(float damageAmount)
     {
-        invincibilityTimer = invincibilityTime;
-        health -= damageAmount;
-        HealthChangeChecks();
+        if (!IsInvincible())
+        {
+            invincibilityTimer = invincibilityTime;
+            health -= damageAmount;
+            HealthChangeChecks();
+        }
     }
 
     public bool IsInvincible()
