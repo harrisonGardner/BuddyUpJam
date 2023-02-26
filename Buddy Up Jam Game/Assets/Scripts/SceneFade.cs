@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,12 +12,19 @@ public class SceneFade : MonoBehaviour
     private bool fadeToBlack = false;
     private bool fadeIn = false;
     private bool fadeDone = false;
+    private bool deathMessageFade = false;
 
     public float fadeSpeed = 2.5f;
     private float fadeTimer = 0f;
     private Image fadeImage;
+    private TextMeshProUGUI deathMessageUI;
+
+    public float deathMessageTime = 5f;
+    private float deathMessageTimer = 0f;
+
 
     private string sceneName = "";
+    private string deathMessage = "";
 
     void Awake()
     {
@@ -39,6 +47,7 @@ public class SceneFade : MonoBehaviour
     private void Start()
     {
         fadeImage = gameObject.transform.GetChild(0).GetComponent<Image>();
+        deathMessageUI = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -49,8 +58,13 @@ public class SceneFade : MonoBehaviour
             fadeTimer += Time.deltaTime;
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeTimer / fadeSpeed);
 
+            if (deathMessageFade)
+            {
+                deathMessageUI.color = new Color(1, 1, 1, fadeTimer / fadeSpeed);
+            }
+
             SoundManager.Instance.ChangeEffectsVolume(1 - fadeTimer / fadeSpeed);
-            SoundManager.Instance.ChangeMusicVolume(1 - fadeTimer/fadeSpeed);
+            SoundManager.Instance.ChangeMusicVolume(1 - fadeTimer / fadeSpeed);
 
             if (fadeTimer >= fadeSpeed)
             {
@@ -65,9 +79,25 @@ public class SceneFade : MonoBehaviour
             SoundManager.Instance.ChangeEffectsVolume(fadeTimer / fadeSpeed);
             SoundManager.Instance.ChangeMusicVolume(fadeTimer / fadeSpeed);
 
+            if (deathMessageFade)
+            {
+                deathMessageUI.color = new Color(1, 1, 1, 1 - fadeTimer / fadeSpeed);
+            }
+
             if (fadeTimer >= fadeSpeed)
             {
                 fadeDone = true;
+                fadeIn = false;
+                deathMessageFade = false;
+            }
+        }
+        else if (deathMessageFade)
+        {
+            deathMessageTimer -= Time.deltaTime;
+            if (deathMessageTimer <= 0)
+            {
+                fadeToBlack = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
             }
         }
         else if (fadeDone && fadeToBlack)
@@ -82,7 +112,23 @@ public class SceneFade : MonoBehaviour
     {
         if (!fadeToBlack)
         {
+            deathMessageUI.color = new Color(1, 1, 1, 0);
             this.sceneName = sceneName;
+            fadeToBlack = true;
+            fadeDone = false;
+            fadeTimer = 0f;
+        }
+    }
+
+    public void DeathMessage(string message)
+    {
+        if (!fadeToBlack)
+        {
+            deathMessage = message;
+            deathMessageUI.text = message;
+            deathMessageFade = true;
+            deathMessageUI.color = new Color(1,1,1,0);
+            deathMessageTimer = deathMessageTime;
             fadeToBlack = true;
             fadeDone = false;
             fadeTimer = 0f;
@@ -93,6 +139,6 @@ public class SceneFade : MonoBehaviour
     {
         fadeIn = true;
         fadeDone = false;
-        fadeTimer = 0f;
+        fadeTimer = 0f;     
     }
 }

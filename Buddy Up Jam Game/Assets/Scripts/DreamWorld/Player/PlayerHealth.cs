@@ -70,9 +70,9 @@ public class PlayerHealth : MonoBehaviour
         transform.position = lastCheckpoint;
         health = 100f;
 
-        Rigidbody rb = GetComponent<Rigidbody>();
+        MusicSwap.Instance.Slow();
+        SceneFade.Instance.DeathMessage("You died in a dream? I usually wake up when that happens");
 
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-        rb.useGravity = true;
+        gameObject.SetActive(false);
     }
 }

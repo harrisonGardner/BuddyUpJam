@@ -45,12 +45,12 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         interactionCalledOnThisFrame = true;
-        LevelTracker.messagesRead = true;
+        LevelManager.messagesRead = true;
     }
 
     private void Awake()
     {
-        LevelTracker.messagesRead = false;
+        LevelManager.messagesRead = false;
     }
 
     private void Update()

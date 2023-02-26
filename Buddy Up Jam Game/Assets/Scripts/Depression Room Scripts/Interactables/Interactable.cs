@@ -27,7 +27,7 @@ public class Interactable : MonoBehaviour
 
     private void Awake()
     {
-        if (LevelTracker.GetLevel() >= disappearAfterLevel)
+        if (LevelManager.GetLevel() >= disappearAfterLevel)
         {
             gameObject.SetActive(false);
         }
@@ -46,7 +46,7 @@ public class Interactable : MonoBehaviour
         level = Mathf.Clamp(level, 0, interactionTextList.Count - 1);
 
         if (interactionTextListPostMessages.Count == interactionTextList.Count)
-            return (LevelTracker.messagesRead ? (interactionTextListPostMessages[level] != "" ? interactionTextListPostMessages[level] : interactionTextList[level] ) : interactionTextList[level]); // I should really stop nesting ternary operators
+            return (LevelManager.messagesRead ? (interactionTextListPostMessages[level] != "" ? interactionTextListPostMessages[level] : interactionTextList[level] ) : interactionTextList[level]); // I should really stop nesting ternary operators
         else
             return interactionTextList[level];
     }

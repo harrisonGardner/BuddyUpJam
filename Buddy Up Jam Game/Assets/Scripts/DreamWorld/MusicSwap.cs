@@ -6,6 +6,8 @@ public class MusicSwap : MonoBehaviour
 {
     AudioSource source;
 
+    public static MusicSwap Instance;
+
     public AudioClip minor;
     public AudioClip major;
 
@@ -14,6 +16,20 @@ public class MusicSwap : MonoBehaviour
 
     private bool slowAudio = false;
     private bool speedAudio = false;
+
+    private bool swap = false;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -33,7 +49,8 @@ public class MusicSwap : MonoBehaviour
                 source.clip = major;
                 source.Play();
                 source.time = source.clip.length * time;
-                speedAudio = true;
+                if(swap)
+                    speedAudio = true;
             }
         }
         else if (speedAudio)
@@ -49,6 +66,12 @@ public class MusicSwap : MonoBehaviour
     }
 
     public void Swap()
+    {
+        Slow();
+        swap = true;
+    }
+
+    public void Slow()
     {
         slowAudio = true;
         transitionTimer = 0f;
