@@ -8,7 +8,7 @@ public class BedInteraction : MonoBehaviour, IInteraction
 {
     public void Interact()
     {
-        if (LevelManager.messagesRead)
+        if (LevelManager.messagesRead && LevelManager.GetLevel() < LevelManager.amountOfLevels)
         {
             //fadeToBlack = true;
             //fadeTimer = 0f;

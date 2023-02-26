@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityTime = 0.25f;
     private float invincibilityTimer = 0f;
 
+    private bool damaged = false;
+
     public float damageFlashInterval = 0.25f;
 
     private void Start()
@@ -35,13 +37,16 @@ public class PlayerHealth : MonoBehaviour
     {
         if (invincibilityTimer > 0)
         {
-            if ((int)(invincibilityTimer/damageFlashInterval) % 2f == 1)
+            if (damaged)
             {
-                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            }
-            else
-            {
-                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                if ((int)(invincibilityTimer / damageFlashInterval) % 2f == 1)
+                {
+                    transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                }
+                else
+                {
+                    transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                }
             }
 
             invincibilityTimer -= Time.deltaTime;
@@ -49,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            damaged = false;
         }
 
         if (gameObject.transform.position.y < -50)
@@ -61,10 +67,16 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!IsInvincible())
         {
-            invincibilityTimer = invincibilityTime;
+            ActivateInvincibility(invincibilityTime);
+            damaged = true;
             health -= damageAmount;
             HealthChangeChecks();
         }
+    }
+
+    public void ActivateInvincibility(float time)
+    {
+        invincibilityTimer = time;
     }
 
     public bool IsInvincible()
