@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
         spidersAlive--;
         if (amountToSpawn == amountSpawned && spidersAlive == 0)
         {
-                musicSwap.Swap();
+                MusicSwap.Instance.Swap();
         }
     }
 

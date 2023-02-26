@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityTime = 0.25f;
     private float invincibilityTimer = 0f;
 
+    public float damageFlashInterval = 0.25f;
+
     private void Start()
     {
         lastCheckpoint = transform.position;
@@ -32,7 +34,22 @@ public class PlayerHealth : MonoBehaviour
     public void Update()
     {
         if (invincibilityTimer > 0)
+        {
+            if ((int)(invincibilityTimer/damageFlashInterval) % 2f == 1)
+            {
+                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            }
+            else
+            {
+                transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            }
+
             invincibilityTimer -= Time.deltaTime;
+        }
+        else
+        {
+            transform.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        }
 
         if (gameObject.transform.position.y < -50)
         {
@@ -70,9 +87,9 @@ public class PlayerHealth : MonoBehaviour
         transform.position = lastCheckpoint;
         health = 100f;
 
-        Rigidbody rb = GetComponent<Rigidbody>();
+        MusicSwap.Instance.Slow();
+        SceneFade.Instance.DeathMessage("You died in a dream? I usually wake up when that happens");
 
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-        rb.useGravity = true;
+        gameObject.SetActive(false);
     }
 }

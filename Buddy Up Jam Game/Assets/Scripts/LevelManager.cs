@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class LevelTracker
+public static class LevelManager
 {
     private static int currentLevel = 0;
     public static bool messagesRead = false;

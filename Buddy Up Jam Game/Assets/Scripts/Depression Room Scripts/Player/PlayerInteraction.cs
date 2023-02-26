@@ -27,9 +27,9 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
-            LevelTracker.SetLevel(LevelTracker.GetLevel() + 1);
+            LevelManager.SetLevel(LevelManager.GetLevel() + 1);
         if (Input.GetKeyDown(KeyCode.LeftControl))
-            LevelTracker.SetLevel(LevelTracker.GetLevel() - 1);
+            LevelManager.SetLevel(LevelManager.GetLevel() - 1);
 
         RaycastHit hit;
 
@@ -55,7 +55,7 @@ public class PlayerInteraction : MonoBehaviour
                 //interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().mainText;
                 //interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().subText;
 
-                interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().GetInteractionText(LevelTracker.GetLevel());
+                interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().GetInteractionText(LevelManager.GetLevel());
 
                 if (Input.GetKeyDown(KeyCode.E))
                     highlightedObject.GetComponent<Interactable>().Interact();
