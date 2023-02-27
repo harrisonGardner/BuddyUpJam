@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
 
     private CursorLockMode camLockState;
     private bool cursorVisibleState = false;
-    private Vector3 mouseSensitivity = new Vector3(3,3);
+    private bool playerCamPrevLocked = false;
 
     private void Start()
     {
@@ -82,22 +82,20 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = camLockState;
         Cursor.visible = cursorVisibleState;
         CloseOptions();
-        playerCam.sensX = mouseSensitivity.x;
-        playerCam.sensY = mouseSensitivity.y;
+        playerCam.locked = playerCamPrevLocked;
     }
 
     void Pause()
     {
         camLockState = Cursor.lockState;
         cursorVisibleState = Cursor.visible;
-        mouseSensitivity = new Vector3(playerCam.sensX, playerCam.sensY);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        playerCam.sensX = 0;
-        playerCam.sensY = 0;
+        playerCamPrevLocked = playerCam.locked;
+        playerCam.locked = true;
     }
 
     void OpenOptions()
