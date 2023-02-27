@@ -13,6 +13,8 @@ public class SettingsMenu : MonoBehaviour
     public TextMeshProUGUI resolutionText;
     private int resolutionIndex;
 
+    public TMP_Dropdown qualityDropdown;
+
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -38,11 +40,15 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = resolutions.Length - 1;
         resolutionText.text = resolutions[resolutionDropdown.value].ToString();
         resolutionDropdown.RefreshShownValue();
+
+        SetQuality(2);
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        qualityDropdown.value = qualityIndex;
+        qualityDropdown.RefreshShownValue();
     }
 
     public void SetFullscreen (bool isFullscreen)

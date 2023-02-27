@@ -47,8 +47,8 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnTimer = spawnRate;
             GameObject enemy = Instantiate(enemyPrefab);
-
-            //enemy.GetComponent<Patrol>().spiderMessageText.text = ( PauseMenu.Instance.triggerButton.isOn ? ":(" : spiderMessages[Random.Range(0, spiderMessages.Count)]);
+            if(PauseMenu.Instance != null)
+                enemy.GetComponent<Patrol>().spiderMessageText.text = ( PauseMenu.Instance.triggerButton.isOn ? ":(" : spiderMessages[Random.Range(0, spiderMessages.Count)]);
 
             int spawnLocation = Random.Range(0, 2);
             enemy.transform.position = (spawnLocation == 0 ? rightSpawn.transform.position : leftSpawn.transform.position);
