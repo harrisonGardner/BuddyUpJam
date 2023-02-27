@@ -294,8 +294,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: if you're gaming right now this is your big sister reminder to pls turn
-    on the lights or you're going to have bulletproof glasses like me
+  m_text: I know I still have anxiety and stuff probably but its just weird because
+    there are days when I feel like I'm floating and detached from it all like I
+    have no motivation to do anything and time is just one big endless blob of nothing
+    but then some days the anxiety comes back in in full force and everything feels
+    so urgent and awful and I just crawl into bed and have a big sad day
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -322,12 +325,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
+  m_fontSize: 14.75
   m_fontSizeBase: 23
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 23
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

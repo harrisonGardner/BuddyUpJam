@@ -55,7 +55,7 @@ public class MessageView : MonoBehaviour
     {
         for (int i = 0; i < messages[level].sender.Count; i++)
         {
-            if (messages[level].sender[i] != "")
+            if (messages[level].sender[i] != "" && messages[level].sender[i] != "-")
             {
                 sender.text = messages[level].sender[i];
                 break;

@@ -42,7 +42,7 @@ public class SideMessageView : MonoBehaviour
         sideMessageObject.sender.text = sideMessages[level].sender[pointer];
         sideMessageObject.message.text = sideMessages[level].message[pointer];
         sideMessageObject.date.text = sideMessages[level].date[pointer];
-        sideMessageObject.messageCount.text = sideMessages[level].messageCount[pointer];
+        sideMessageObject.messageCount.text = (sideMessages[level].messageCount[pointer] != "" ? "Unread Messages: " + sideMessages[level].messageCount[pointer] : "");
 
         pointer++;
     }

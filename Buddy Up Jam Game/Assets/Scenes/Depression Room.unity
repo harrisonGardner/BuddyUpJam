@@ -16594,8 +16594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - {fileID: 11400000, guid: fc3cd9ab42da5f141902b085648074fd, type: 2}
+  - {fileID: 11400000, guid: 24a5cf2d74ff81445a37299dfbbdc9a0, type: 2}
   - {fileID: 11400000, guid: d7b381b236f27344d9f6154d48f1e5d1, type: 2}
-  - {fileID: 0}
   - {fileID: 0}
   computerInteraction: {fileID: 471641707}
   sender: {fileID: 1641271115}
@@ -19826,6 +19826,8 @@ MonoBehaviour:
     type: 3}
   sideMessages:
   - {fileID: 11400000, guid: 55a9766b9c1437c4e93ce17be8242e56, type: 2}
+  - {fileID: 11400000, guid: 3b8ee06cb942bdd429b03790d5d548f0, type: 2}
+  - {fileID: 11400000, guid: 66c10d90cf16060469b73f4d518ae0ba, type: 2}
   - {fileID: 11400000, guid: 3b8ee06cb942bdd429b03790d5d548f0, type: 2}
 --- !u!1 &1969873006
 GameObject:
