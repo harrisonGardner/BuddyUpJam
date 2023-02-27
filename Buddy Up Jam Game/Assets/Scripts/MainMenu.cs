@@ -33,6 +33,12 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
 
         playButton.onClick.AddListener(Play);
+
+        if (LevelManager.GetLevel() > 0)
+        {
+            canvasGroup.alpha = 0;
+            Play();
+        }
     }
 
     private void Update()
@@ -47,7 +53,8 @@ public class MainMenu : MonoBehaviour
             cam.transform.position = transform.position + (cameraTargetVector * adjustedTransitionTime);
             cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x, cam.transform.eulerAngles.y, (1 - adjustedTransitionTime) * 90f);
 
-            canvasGroup.alpha = (1 - adjustedTransitionTime);
+            if(LevelManager.GetLevel() <= 0)
+                canvasGroup.alpha = (1 - adjustedTransitionTime);
 
             if (transitionTimer >= transitionTime)
                 transitionFinished = true;
