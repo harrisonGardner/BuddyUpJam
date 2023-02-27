@@ -50,10 +50,17 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
         }
     }
 
+    public string GetInteractionInstructions()
+    {
+        return "E to View Messages";
+    }
+
     private void Awake()
     {
         LevelManager.messagesRead = false;
     }
+
+
 
     private void Update()
     {

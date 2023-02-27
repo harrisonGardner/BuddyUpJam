@@ -13,6 +13,7 @@ public class SceneFade : MonoBehaviour
     private bool fadeIn = false;
     private bool fadeDone = false;
     private bool deathMessageFade = false;
+    private bool endGameFade = false;
 
     public float fadeSpeed = 2.5f;
     private float fadeTimer = 0f;
@@ -100,6 +101,14 @@ public class SceneFade : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
             }
         }
+        else if (endGameFade)
+        {
+            deathMessageUI.color = new Color(1, 1, 1, 1);
+            if (Input.anyKeyDown)
+            {
+                PauseMenu.Instance.QuitGame();
+            }
+        }
         else if (fadeDone && fadeToBlack)
         {
             //Transition scene or whatever else
@@ -132,6 +141,19 @@ public class SceneFade : MonoBehaviour
             fadeToBlack = true;
             fadeDone = false;
             fadeTimer = 0f;
+        }
+    }
+
+    public void GameEndTransition()
+    {
+        if (!fadeToBlack)
+        {
+            endGameFade = true;
+            fadeToBlack = true;
+            fadeDone = false;
+            fadeTimer = 0f;
+            deathMessageUI.color = new Color(1, 1, 1, 0);
+            deathMessageUI.text = "Thank you so much for playing our game! \nPress any key to exit the game";
         }
     }
 

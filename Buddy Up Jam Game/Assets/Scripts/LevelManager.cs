@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 
     public static int amountOfLevels = 3;
 
+    public static bool readyToLeave = false;
+
     public static void SetLevel(int level)
     {
         currentLevel = level;

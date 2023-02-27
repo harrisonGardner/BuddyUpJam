@@ -45,6 +45,10 @@ public class MessageView : MonoBehaviour
                 if (pointer >= messages[level].sender.Count)
                 {
                     LevelManager.messagesRead = true;
+                    if (LevelManager.GetLevel() >= 3)
+                    {
+                        LevelManager.readyToLeave = true;
+                    }
                     instructions.text = "E to Stop Viewing Messages";
                 }
             }
