@@ -37,15 +37,17 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
 
     private void DeInteract()
     {
-        playerInteraction.enabled = true;
-        playerInteraction.interactionTextCanvas.SetActive(true);
-        playerMovement.enabled = true;
-        playerCam.enabled = true;
-        interacting = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        interactionCalledOnThisFrame = true;
-        LevelManager.messagesRead = true;
+        if (LevelManager.messagesRead)
+        {
+            playerInteraction.enabled = true;
+            playerInteraction.interactionTextCanvas.SetActive(true);
+            playerMovement.enabled = true;
+            playerCam.enabled = true;
+            interacting = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            interactionCalledOnThisFrame = true;
+        }
     }
 
     private void Awake()
