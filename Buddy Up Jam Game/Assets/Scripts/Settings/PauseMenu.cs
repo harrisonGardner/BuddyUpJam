@@ -76,6 +76,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         CloseOptions();
         if(playerCam != null)
             playerCam.enabled = true;
@@ -87,6 +88,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (playerCam != null)
             playerCam.enabled = false;
     }
@@ -108,6 +110,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("Quit Game");
         Application.Quit();
     }
 }

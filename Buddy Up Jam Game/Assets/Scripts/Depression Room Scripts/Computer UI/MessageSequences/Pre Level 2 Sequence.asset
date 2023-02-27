@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb516b7061172e4ba22230d9b3c7f00, type: 3}
+  m_Name: Pre Level 2 Sequence
+  m_EditorClassIdentifier: 
+  presentMessageCount: 2
+  timestamp:
+  - two months ago, 9:55 PM
+  - 
+  - 2:13 AM
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - You set the nickname for Sara to one of the sisters of all time
+  - 
+  - 
+  sender:
+  - 
+  - one of the sisters of all time
+  - 
+  - You
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - one of the sisters of all time
+  - 
+  - one of the sisters of all time
+  - one of the sisters of all time
+  message:
+  - 
+  - you're probably not reading these but mom said to check in again so hope you're
+    okay
+  - 
+  - hi
+  - omg
+  - omg omg???
+  - WHAt DO YOU MEAND HI?
+  - YOU HAVENT SESPONDED IN HALF A YEARDKF????
+  - HOWDSSKDGH
+  - aeer
+  - '*how are you doing? I mean are you eating and stuff? staying hydrated?'
+  - also oh my god it's 2 am
+  - Before you say anything I'm technically in bed already just doom scrolling
+  - if you're gaming right now this is your big sister reminder to pls turn on the
+    lights or you're going to have bulletproof glasses like me
+  - also
+  - i know you know but just saying it again because its my job. if you need anything
+    just let me know, okay?
+  - okay??? im never too busy to chat
+  - seriously, even if its just to ask for a 50 pack of energy drinks or a takeout
+    delivery or whatever, if somethings up, don't keep it to yourself
+  - as you know whatever you tell me stays in the chat
+  - just between you, me, and the FBI
+  - 
+  - okay cool, taking that as a tentatively good sign
+  - <3

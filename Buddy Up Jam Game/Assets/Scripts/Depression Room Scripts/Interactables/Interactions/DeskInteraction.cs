@@ -13,4 +13,9 @@ public class DeskInteraction : MonoBehaviour, IInteraction
     {
 
     }
+
+    public string GetInteractionInstructions()
+    {
+        return "";
+    }
 }

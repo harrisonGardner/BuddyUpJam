@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class SettingsMenu : MonoBehaviour
     Resolution[] resolutions;
 
     public Dropdown resolutionDropdown;
+    public TextMeshProUGUI resolutionText;
     private int resolutionIndex;
 
     void Start()
@@ -32,9 +34,10 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
-            resolutionDropdown.AddOptions(options);
-            resolutionDropdown.value = currentResolutionIndex;
-            resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = resolutions.Length - 1;
+        resolutionText.text = resolutions[resolutionDropdown.value].ToString();
+        resolutionDropdown.RefreshShownValue();
     }
 
     public void SetQuality(int qualityIndex)
@@ -49,7 +52,9 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetResolution (int resolution)
     {
-        Resolution resolution1 = resolutions[resolutionIndex];
+        Resolution resolution1 = resolutions[resolution];
+
+        resolutionText.text = resolution1.ToString();
 
         Screen.SetResolution(resolution1.width, resolution1.height, Screen.fullScreen);
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComputerInteraction : MonoBehaviour, IInteraction
 {
-    private bool interacting = false;
+    public bool interacting = false;
     private bool interactionCalledOnThisFrame = false;
     private GameObject player;
 
@@ -37,21 +37,30 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
 
     private void DeInteract()
     {
-        playerInteraction.enabled = true;
-        playerInteraction.interactionTextCanvas.SetActive(true);
-        playerMovement.enabled = true;
-        playerCam.enabled = true;
-        interacting = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        interactionCalledOnThisFrame = true;
-        LevelManager.messagesRead = true;
+        if (LevelManager.messagesRead)
+        {
+            playerInteraction.enabled = true;
+            playerInteraction.interactionTextCanvas.SetActive(true);
+            playerMovement.enabled = true;
+            playerCam.enabled = true;
+            interacting = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            interactionCalledOnThisFrame = true;
+        }
+    }
+
+    public string GetInteractionInstructions()
+    {
+        return "E to View Messages";
     }
 
     private void Awake()
     {
         LevelManager.messagesRead = false;
     }
+
+
 
     private void Update()
     {

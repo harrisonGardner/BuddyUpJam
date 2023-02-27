@@ -26,10 +26,10 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-            LevelManager.SetLevel(LevelManager.GetLevel() + 1);
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            LevelManager.SetLevel(LevelManager.GetLevel() - 1);
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //    LevelManager.SetLevel(LevelManager.GetLevel() + 1);
+        //if (Input.GetKeyDown(KeyCode.LeftControl))
+        //    LevelManager.SetLevel(LevelManager.GetLevel() - 1);
 
         RaycastHit hit;
 
@@ -56,6 +56,11 @@ public class PlayerInteraction : MonoBehaviour
                 //interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().subText;
 
                 interactionTextCanvas.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = hit.collider.gameObject.GetComponent<Interactable>().GetInteractionText(LevelManager.GetLevel());
+                IInteraction interaction;
+                if (hit.collider.gameObject.TryGetComponent<IInteraction>(out interaction))
+                    interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = interaction.GetInteractionInstructions();
+                else
+                    interactionTextCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
 
                 if (Input.GetKeyDown(KeyCode.E))
                     highlightedObject.GetComponent<Interactable>().Interact();

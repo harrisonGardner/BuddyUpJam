@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb516b7061172e4ba22230d9b3c7f00, type: 3}
+  m_Name: Pre Level 1 Sequence 1
+  m_EditorClassIdentifier: 
+  presentMessageCount: 11
+  timestamp:
+  - 2 years ago, 1:35 AM
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 11:15 AM
+  - 
+  sender:
+  - 
+  - soft boi hours
+  - You
+  - soft boi hours
+  - soft boi hours
+  - You
+  - soft boi hours
+  - You
+  - You
+  - You
+  - You
+  - 
+  - soft boi hours
+  message:
+  - 
+  - i just dont get why they have to make a big deal about it.
+  - sorry dude that sucks
+  - yeah :/ thanks for listening tho
+  - wbu? anything you want to rant about?
+  - nothing rant worthy just you know... general bad vibes
+  - 'right yeah, its not a good year for anyone '
+  - yeah, it's been rough
+  - my classes are so boring and I'm not really close with anyone so
+  - '[message removed]'
+  - '[message removed]'
+  - 
+  - hey sorry I dropped off of social media for a bit. How are you?
