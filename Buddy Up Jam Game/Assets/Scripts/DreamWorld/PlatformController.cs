@@ -9,6 +9,8 @@ public class PlatformController : MonoBehaviour
 
     public EnemySpawner spawner;
 
+    public GameObject playerCamCinemachine;
+
     public void Start()
     {
         //Get list of platforms
@@ -22,7 +24,14 @@ public class PlatformController : MonoBehaviour
     {
         if ((spawner.amountSpawned - spawner.spidersAlive) >= (spawner.amountToSpawn / platforms.Count) * (pointer + 1))
         {
-            if (pointer < platforms.Count)
+            Debug.Log((pointer) + ":" + (platforms.Count - 1));
+            if (pointer == platforms.Count - 1 && (spawner.amountSpawned - spawner.spidersAlive) == spawner.amountToSpawn)
+            {
+                platforms[pointer].GetComponent<Platform>().RevealPlatform();
+                pointer++;
+                playerCamCinemachine.GetComponent<LockCameraY>().enabled = false;
+            }
+            else if (pointer != platforms.Count - 1 && pointer < platforms.Count)
             {
                 platforms[pointer].GetComponent<Platform>().RevealPlatform();
                 pointer++;
