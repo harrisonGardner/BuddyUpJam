@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComputerInteraction : MonoBehaviour, IInteraction
 {
-    private bool interacting = false;
+    public bool interacting = false;
     private bool interactionCalledOnThisFrame = false;
     private GameObject player;
 

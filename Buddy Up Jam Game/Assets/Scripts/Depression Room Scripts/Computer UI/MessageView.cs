@@ -9,6 +9,8 @@ public class MessageView : MonoBehaviour
     public List<MessageSequence> messages = new List<MessageSequence>();
     private int pointer = 0;
 
+    public ComputerInteraction computerInteraction;
+
     public TextMeshProUGUI sender;
     public GameObject messagePrefab;
     public GameObject timeStampPrefab;
@@ -24,11 +26,6 @@ public class MessageView : MonoBehaviour
 
     public Scrollbar scrollbar;
 
-    public void Start()
-    {
-        
-    }
-
     public void Update()
     {
         if (LevelManager.GetLevel() != level)
@@ -37,17 +34,19 @@ public class MessageView : MonoBehaviour
             InitializeMessages();
         }
 
-
-        scrollbar.value += Input.mouseScrollDelta.y * Time.deltaTime * 15;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (computerInteraction.interacting)
         {
-            RevealNextMessage();
-            pointer++;
-            if (pointer >= messages[level].sender.Count)
+            scrollbar.value += Input.mouseScrollDelta.y * Time.deltaTime * 15;
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                LevelManager.messagesRead = true;
-                instructions.text = "E to Stop Viewing Messages";
+                RevealNextMessage();
+                pointer++;
+                if (pointer >= messages[level].sender.Count)
+                {
+                    LevelManager.messagesRead = true;
+                    instructions.text = "E to Stop Viewing Messages";
+                }
             }
         }
     }
