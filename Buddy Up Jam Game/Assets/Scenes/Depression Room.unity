@@ -18501,6 +18501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097408554}
   - component: {fileID: 1097408553}
+  - component: {fileID: 1097408555}
   m_Layer: 0
   m_Name: Ambient Source
   m_TagString: Untagged
@@ -18619,6 +18620,22 @@ Transform:
   m_Father: {fileID: 1852899837}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097408555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097408552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38559cfa44eec534ba23ccb5442debe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rainy: {fileID: 8300000, guid: 1e677256231157d4e978bdcc954e771d, type: 3}
+  sunny: {fileID: 8300000, guid: 3d76955b30a647e4b9e0bdf411e7bb2f, type: 3}
+  ambient: {fileID: 1097408553}
+  window: {fileID: 968207105}
 --- !u!1 &1111442312
 GameObject:
   m_ObjectHideFlags: 0

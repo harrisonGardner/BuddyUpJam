@@ -40,6 +40,9 @@ public class PlayerMovement2D : MonoBehaviour
 
     public Animator anim;
 
+    public AudioClip jumpSound;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +120,7 @@ public class PlayerMovement2D : MonoBehaviour
         if ((!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space)))
         {
             Jump(jumpHeight);
+
         }
         else if (doubleJumpEnabled && !doubleJumped && coyoteTimer <= 0 && Input.GetKeyDown(KeyCode.Space))
         {
@@ -161,6 +165,9 @@ public class PlayerMovement2D : MonoBehaviour
     public void Jump(float power)
     {
         anim.SetBool("IsJumping", true);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(jumpSound);
+        //audioSource.pitch = 1;
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(Vector3.up * power, ForceMode.Impulse);
         jumpBuffer = true;
