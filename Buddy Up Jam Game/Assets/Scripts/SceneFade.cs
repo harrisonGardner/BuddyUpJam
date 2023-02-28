@@ -190,14 +190,16 @@ public class SceneFade : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Dream World" && LevelManager.GetLevel() == 0)
         {
             deathMessageUI.color = new Color(1, 1, 1, 1);
-            deathMessageUI.text = "Space to jump \nSpace while in air to double jump";
-            fadeTimer -= holdBlackScreenBeforeFadeIn;
+            deathMessageUI.text = "Jump and squish the spiders!\n\n Space to jump \n\nSpace while in air to double jump";
+            fadeTimer -= holdBlackScreenBeforeFadeIn + 2;
         }
         else if (SceneManager.GetActiveScene().name == "Depression Room" && LevelManager.GetLevel() == 0)
         {
             deathMessageUI.color = new Color(1, 1, 1, 1);
-            deathMessageUI.text = "Trigger warning";
-            fadeTimer -= holdBlackScreenBeforeFadeIn;
+            deathMessageUI.text = "This game contains references to topics such as depression and suicide which some players may find distressing. \n\n" +
+                "CW: negative self-talk, depression, suicidal ideation, insects, spiders\n\n" +
+                "\"Arachnaphobia\" mode and \"More Trigger Friendly\" mode (less negative messages) are available in the settings.";
+            fadeTimer -= holdBlackScreenBeforeFadeIn + 6;
         }
         else
         {

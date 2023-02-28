@@ -6362,7 +6362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Socials:'
+  m_text: 'Socials: https://crimsonjbk.itch.io @CrimsonJBK https://www.artstation.com/crimsonjbk'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -6390,7 +6390,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
+  m_fontSize: 8.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6753,7 +6753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Role: Programmer'
+  m_text: 'Role: Programmer, Game Designer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -12876,7 +12876,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Socials: <link="https://metaarcade.itch.io/">Itch.io: MetaArcade</link>'
+  m_text: 'Socials: Itch.io (MetaArcade)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -14458,7 +14458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Socials:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -14748,7 +14748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nikita
+  m_text: Nikita Chernin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -15999,7 +15999,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Role: Writer, Narrative Designer, \u2026.a\u2026rtist?"
+  m_text: 'Role: Writer, Narrative Designer, Visual Development Artist'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -16027,7 +16027,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.95
+  m_fontSize: 8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16849,7 +16849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Role: Game Designer'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -16877,7 +16877,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.95
+  m_fontSize: 11
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21110,7 +21110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Role: 3D Artist'
+  m_text: 'Role: 3D Modeler and Animator'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -21637,7 +21637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Socials:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -22270,7 +22270,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Socials:'
+  m_text: 'Socials: @milesandersonart (Instagram)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -22936,7 +22936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Role: 3D Artist'
+  m_text: 'Role: 3D Modeler and Animator, Level Designer, Character Artist'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 987f6c6408699954f9c34a51b775bfb2, type: 2}
   m_sharedMaterial: {fileID: 3878712902945770878, guid: 987f6c6408699954f9c34a51b775bfb2,
@@ -22964,7 +22964,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.95
+  m_fontSize: 8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
