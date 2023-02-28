@@ -47,6 +47,8 @@ public class MainMenu : MonoBehaviour
 
         creditButton.onClick.AddListener(OpenCredits);
         creditsBackButton.onClick.AddListener(CloseCredits);
+
+        quitButton.onClick.AddListener(pauseMenu.QuitGame);
         
 
         if (LevelManager.GetLevel() > 0)

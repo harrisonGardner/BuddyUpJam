@@ -159,7 +159,7 @@ public class SceneFade : MonoBehaviour
             fadeDone = false;
             fadeTimer = 0f;
             deathMessageUI.color = new Color(1, 1, 1, 0);
-            deathMessageUI.text = "Thank you so much for playing our game!";
+            deathMessageUI.text = "Just a little more and I'll be further ahead than I was before.";
         }
     }
 

@@ -38,6 +38,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     private PlayerHealth health;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,9 +57,11 @@ public class PlayerMovement2D : MonoBehaviour
         if (horizontalInput == 0)
         {
             rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+            anim.SetBool("IsMoving", false);
         }
         else
         {
+            anim.SetBool("IsMoving", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0f, (horizontalInput == 1 ? 180f : 0f), 0f)), 720f * Time.deltaTime);
         }
 
@@ -95,6 +99,19 @@ public class PlayerMovement2D : MonoBehaviour
         {
             if(coyoteTimer > 0)
                 coyoteTimer -= Time.deltaTime;
+        }
+
+        if (!grounded && coyoteTimer <= 0)
+        {
+            anim.SetBool("Grounded", false);
+            if(rb.velocity.y < 0)
+                anim.SetBool("Falling", true);
+        }
+        else
+        {
+            anim.SetBool("Grounded", true);
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("Falling", false);
         }
 
         if ((!jumpBuffer && coyoteTimer > 0 && Input.GetKey(KeyCode.Space)))
@@ -143,6 +160,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Jump(float power)
     {
+        anim.SetBool("IsJumping", true);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(Vector3.up * power, ForceMode.Impulse);
         jumpBuffer = true;

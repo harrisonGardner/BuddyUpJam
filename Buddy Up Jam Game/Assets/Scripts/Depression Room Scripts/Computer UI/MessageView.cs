@@ -36,7 +36,7 @@ public class MessageView : MonoBehaviour
 
         if (computerInteraction.interacting)
         {
-            scrollbar.value += Input.mouseScrollDelta.y * Time.deltaTime * 15;
+            scrollbar.value += (Input.mouseScrollDelta.y * 35f) / scrollRect.content.sizeDelta.y;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
