@@ -15,7 +15,7 @@ public class DoorInteraction : MonoBehaviour, IInteraction
     public string GetInteractionInstructions()
     {
         if (LevelManager.messagesRead && LevelManager.GetLevel() <= LevelManager.amountOfLevels && LevelManager.readyToLeave)
-            return "E to go OutSide";
+            return "E to go Outside";
         else
             return "";
     }

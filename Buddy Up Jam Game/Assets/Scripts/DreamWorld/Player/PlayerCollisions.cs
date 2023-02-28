@@ -37,6 +37,7 @@ public class PlayerCollisions : MonoBehaviour
         }
         else if (trigger.CompareTag("Goal"))
         {
+            trigger.GetComponent<Collider>().enabled = false;
             LevelManager.SetLevel(LevelManager.GetLevel() + 1);
             SceneFade.Instance.SceneTransition("Depression Room");
         }

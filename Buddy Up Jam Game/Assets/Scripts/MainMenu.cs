@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public bool viewing = true;
+    public static bool viewing = true;
     public GameObject cam;
     private PlayerCam playerCam;
     public GameObject player;
@@ -18,8 +18,16 @@ public class MainMenu : MonoBehaviour
     private Vector3 cameraTargetVector;
 
     public Button playButton;
+    public Button optionsButton;
+    public Button creditButton;
+    public Button quitButton;
 
     public CanvasGroup canvasGroup;
+
+    public GameObject credits;
+    public Button creditsBackButton;
+
+    public PauseMenu pauseMenu;
 
     private void Start()
     {
@@ -29,10 +37,17 @@ public class MainMenu : MonoBehaviour
         playerCam.locked = true;
         cam.transform.position = transform.position;
 
+        pauseMenu = PauseMenu.Instance;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         playButton.onClick.AddListener(Play);
+        optionsButton.onClick.AddListener(pauseMenu.OpenOptions);
+
+        creditButton.onClick.AddListener(OpenCredits);
+        creditsBackButton.onClick.AddListener(CloseCredits);
+        
 
         if (LevelManager.GetLevel() > 0)
         {
@@ -77,6 +92,16 @@ public class MainMenu : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void OpenCredits()
+    {
+        credits.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        credits.SetActive(false);
     }
 
     //https://easings.net/#easeInOutSine

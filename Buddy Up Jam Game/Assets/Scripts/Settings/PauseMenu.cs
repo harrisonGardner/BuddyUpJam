@@ -27,6 +27,8 @@ public class PauseMenu : MonoBehaviour
     private bool cursorVisibleState = false;
     private bool playerCamPrevLocked = false;
 
+
+
     private void Start()
     {
         Camera.main.TryGetComponent<PlayerCam>(out playerCam);
@@ -61,7 +63,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !MainMenu.viewing)
         {
             if (GameIsPaused)
             {
@@ -98,13 +100,18 @@ public class PauseMenu : MonoBehaviour
         playerCam.locked = true;
     }
 
-    void OpenOptions()
+    private bool pauseOpen = false;
+    public void OpenOptions()
     {
+        pauseOpen = pauseMenuUI.activeInHierarchy;
+        pauseMenuUI.SetActive(true);
         optionsMenu.SetActive(true);
     }
-
-    void CloseOptions()
+    public void CloseOptions()
     {
+        if (!pauseOpen)
+            pauseMenuUI.SetActive(pauseOpen);
+        pauseOpen = pauseMenuUI.activeInHierarchy;
         optionsMenu.SetActive(false);
     }
 
