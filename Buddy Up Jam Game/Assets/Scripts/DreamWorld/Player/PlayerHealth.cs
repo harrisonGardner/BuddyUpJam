@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
 
     public float damageFlashInterval = 0.25f;
 
+    public List<string> deathMessages = new List<string>();
+
     private void Start()
     {
         lastCheckpoint = transform.position;
@@ -103,7 +105,7 @@ public class PlayerHealth : MonoBehaviour
         health = 100f;
 
         MusicSwap.Instance.Slow();
-        SceneFade.Instance.DeathMessage("You died in a dream? I usually wake up when that happens");
+        SceneFade.Instance.DeathMessage(deathMessages[Random.Range(0, deathMessages.Count)]);
 
         gameObject.SetActive(false);
     }

@@ -15,6 +15,9 @@ public class SoundManager : MonoBehaviour
     private float effectsVolume = 1f;
     private float musicVolume = 1f;
 
+    private bool effectsMuted = false;
+    private bool musicMuted = false;
+
     private bool fadingIn = true;
     private float fadeInTime = 2.5f;
     private float fadeInTimer = 2.5f;
@@ -45,6 +48,9 @@ public class SoundManager : MonoBehaviour
         fadeInTimer = 0f;
 
         FindSources();
+
+        SetEffectsMute(effectsMuted);
+        SetMusicMute(musicMuted);
     }
 
     private void Update()
@@ -95,14 +101,26 @@ public class SoundManager : MonoBehaviour
 
     public void ToggleEffects()
     {
-        foreach(AudioSource effectSource in effectsSources)
-            effectSource.mute = !effectSource.mute;
+        effectsMuted = !effectsMuted;
+        SetEffectsMute(effectsMuted);
+    }
+
+    private void SetEffectsMute(bool mute)
+    {
+        foreach (AudioSource effectSource in effectsSources)
+            effectSource.mute = effectsMuted;
     }
 
     public void ToggleMusic()
     {
+        musicMuted = !musicMuted;
+        SetMusicMute(musicMuted);
+    }
+
+    private void SetMusicMute(bool mute)
+    {
         foreach (AudioSource musicSource in musicSources)
-            musicSource.mute = !musicSource.mute;
+            musicSource.mute = musicMuted;
     }
 
     // These methods are currently being used to fade out the sound during the scene transitions.

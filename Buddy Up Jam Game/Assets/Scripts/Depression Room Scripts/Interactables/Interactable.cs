@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     public int disappearAfterLevel = 4;
 
     private IInteraction interaction;
+
     // Start is called before the first frame update
     void Start()
     {

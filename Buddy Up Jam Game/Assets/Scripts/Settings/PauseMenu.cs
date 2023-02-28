@@ -23,6 +23,12 @@ public class PauseMenu : MonoBehaviour
 
     private PlayerCam playerCam;
 
+    private CursorLockMode camLockState;
+    private bool cursorVisibleState = false;
+    private bool playerCamPrevLocked = false;
+
+
+
     private void Start()
     {
         Camera.main.TryGetComponent<PlayerCam>(out playerCam);
@@ -57,7 +63,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !MainMenu.viewing)
         {
             if (GameIsPaused)
             {
@@ -75,31 +81,37 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = camLockState;
+        Cursor.visible = cursorVisibleState;
         CloseOptions();
-        if(playerCam != null)
-            playerCam.enabled = true;
+        playerCam.locked = playerCamPrevLocked;
     }
 
     void Pause()
     {
+        camLockState = Cursor.lockState;
+        cursorVisibleState = Cursor.visible;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        if (playerCam != null)
-            playerCam.enabled = false;
+        playerCamPrevLocked = playerCam.locked;
+        playerCam.locked = true;
     }
 
-    void OpenOptions()
+    private bool pauseOpen = false;
+    public void OpenOptions()
     {
+        pauseOpen = pauseMenuUI.activeInHierarchy;
+        pauseMenuUI.SetActive(true);
         optionsMenu.SetActive(true);
     }
-
-    void CloseOptions()
+    public void CloseOptions()
     {
+        if (!pauseOpen)
+            pauseMenuUI.SetActive(pauseOpen);
+        pauseOpen = pauseMenuUI.activeInHierarchy;
         optionsMenu.SetActive(false);
     }
 

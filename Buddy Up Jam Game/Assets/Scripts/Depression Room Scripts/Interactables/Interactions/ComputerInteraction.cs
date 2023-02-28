@@ -13,6 +13,9 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
     private PlayerInteraction playerInteraction;
 
 
+    public AudioClip keyboardSound;
+    public AudioSource audioSource;
+
     public void Interact()
     {
         Cursor.visible = true;
@@ -33,6 +36,8 @@ public class ComputerInteraction : MonoBehaviour, IInteraction
         Camera.main.transform.position = transform.GetChild(0).position;
         Camera.main.transform.rotation = transform.GetChild(0).rotation;
         interactionCalledOnThisFrame = true;
+
+        audioSource.PlayOneShot(keyboardSound);
     }
 
     private void DeInteract()

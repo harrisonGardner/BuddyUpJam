@@ -27,6 +27,8 @@ public class SceneFade : MonoBehaviour
     private string sceneName = "";
     private string deathMessage = "";
 
+    public Button mainMenuButton;
+
     void Awake()
     {
         if (Instance == null)
@@ -49,6 +51,8 @@ public class SceneFade : MonoBehaviour
     {
         fadeImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         deathMessageUI = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        mainMenuButton.onClick.AddListener(ResetGame);
     }
 
     // Update is called once per frame
@@ -103,11 +107,13 @@ public class SceneFade : MonoBehaviour
         }
         else if (endGameFade)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             deathMessageUI.color = new Color(1, 1, 1, 1);
-            if (Input.anyKeyDown)
-            {
-                PauseMenu.Instance.QuitGame();
-            }
+            mainMenuButton.GetComponent<Image>().raycastTarget = true;
+            mainMenuButton.GetComponent<CanvasGroup>().alpha = 1;
+            mainMenuButton.interactable = true;
         }
         else if (fadeDone && fadeToBlack)
         {
@@ -153,7 +159,7 @@ public class SceneFade : MonoBehaviour
             fadeDone = false;
             fadeTimer = 0f;
             deathMessageUI.color = new Color(1, 1, 1, 0);
-            deathMessageUI.text = "Thank you so much for playing our game! \nPress any key to exit the game";
+            deathMessageUI.text = "Just a little more and I'll be further ahead than I was before.";
         }
     }
 
@@ -162,5 +168,22 @@ public class SceneFade : MonoBehaviour
         fadeIn = true;
         fadeDone = false;
         fadeTimer = 0f;     
+    }
+
+    private void ResetGame()
+    {
+        MainMenu.viewing = true;
+        fadeToBlack = false;
+        fadeDone = true;
+        fadeIn = false;
+        endGameFade = false;
+
+        deathMessageUI.color = new Color(1, 1, 1, 0);
+        mainMenuButton.GetComponent<Image>().raycastTarget = false;
+        mainMenuButton.GetComponent<CanvasGroup>().alpha = 0;
+        mainMenuButton.interactable = false;
+
+        LevelManager.SetLevel(0);
+        SceneManager.LoadScene("Depression Room");
     }
 }
