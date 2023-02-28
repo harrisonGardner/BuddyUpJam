@@ -26,6 +26,11 @@ public class MessageView : MonoBehaviour
 
     public Scrollbar scrollbar;
 
+    public AudioClip sentSound;
+    public AudioClip receivedSound;
+
+    public AudioSource audioSource;
+
     public void Update()
     {
         if (LevelManager.GetLevel() != level)
@@ -92,6 +97,11 @@ public class MessageView : MonoBehaviour
                 message.GetComponent<RectTransform>().localPosition = new Vector3((messages[level].sender[pointer] == "" || messages[level].sender[pointer] == "You" ? 1150 : 200), -totalMessagesHeight, 0);
                 message.GetComponent<MessageObject>().message.text = messages[level].message[pointer];
                 message.GetComponent<MessageObject>().sender.text = messages[level].sender[pointer];
+
+                if (messages[level].sender[pointer] != "You")
+                    audioSource.PlayOneShot(receivedSound);
+                else
+                    audioSource.PlayOneShot(sentSound);
 
                 totalMessagesHeight += 150; //150 is space between messages, 100 is height of messages
             }

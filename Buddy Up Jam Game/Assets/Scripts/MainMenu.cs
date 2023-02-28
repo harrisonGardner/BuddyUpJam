@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour
 
     public PauseMenu pauseMenu;
 
+    public AudioClip notificationSound;
+    public AudioSource notificationSource;
     private void Start()
     {
         playerCam = cam.GetComponent<PlayerCam>();
@@ -78,6 +80,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (!viewing && transitionFinished)
         {
+            notificationSource.PlayOneShot(notificationSound);
             playerMovement.enabled = true;
             playerCam.locked = false;
             gameObject.SetActive(false);
