@@ -2856,7 +2856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635702926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.52, y: 0.2, z: 0}
+  m_LocalPosition: {x: -25.52, y: 1.64, z: 0}
   m_LocalScale: {x: 0.62585, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3225,7 +3225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766270189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.32, y: 0.20000005, z: 0}
+  m_LocalPosition: {x: 25.32, y: 1.6400001, z: 0}
   m_LocalScale: {x: 0.62585, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4613,7 +4613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144924344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5025,6 +5025,8 @@ MonoBehaviour:
   - It's going to be okay. I'll get through this.
   - Breathe in. Breathe out. Breathe in...
   - This is all just temporary. It WILL pass.
+  - I can do it, I can do it, I can do it...
+  - I'm still here. I have every right to continue being here.
 --- !u!114 &1404907403
 MonoBehaviour:
   m_ObjectHideFlags: 0
