@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   spawnRate: 1
-  maxAlive: 5
+  maxAlive: 3
   amountToSpawn: 15

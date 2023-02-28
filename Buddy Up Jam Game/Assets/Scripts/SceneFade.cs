@@ -29,6 +29,8 @@ public class SceneFade : MonoBehaviour
 
     public Button mainMenuButton;
 
+    public float holdBlackScreenBeforeFadeIn = 4f;
+
     void Awake()
     {
         if (Instance == null)
@@ -61,6 +63,7 @@ public class SceneFade : MonoBehaviour
         if (fadeToBlack && !fadeDone)
         {
             fadeTimer += Time.deltaTime;
+            
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeTimer / fadeSpeed);
 
             if (deathMessageFade)
@@ -79,7 +82,19 @@ public class SceneFade : MonoBehaviour
         else if (fadeIn && !fadeDone)
         {
             fadeTimer += Time.deltaTime;
-            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1 - (fadeTimer / fadeSpeed));
+
+            if (fadeTimer <= 0)
+            {
+                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1);
+            }
+            else
+                fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1 - (fadeTimer / fadeSpeed));
+
+            if (LevelManager.GetLevel() == 0 && deathMessageUI.text != "")
+            {
+               
+                deathMessageUI.color = new Color(1, 1, 1, 1 - (Mathf.Max(fadeTimer, 0) / fadeSpeed));
+            }
 
             SoundManager.Instance.ChangeEffectsVolume(fadeTimer / fadeSpeed);
             SoundManager.Instance.ChangeMusicVolume(fadeTimer / fadeSpeed);
@@ -94,7 +109,10 @@ public class SceneFade : MonoBehaviour
                 fadeDone = true;
                 fadeIn = false;
                 deathMessageFade = false;
+                GetComponent<Canvas>().sortingOrder = 0;
             }
+            else
+                GetComponent<Canvas>().sortingOrder = 1;
         }
         else if (deathMessageFade)
         {
@@ -167,7 +185,28 @@ public class SceneFade : MonoBehaviour
     {
         fadeIn = true;
         fadeDone = false;
-        fadeTimer = 0f;     
+        fadeTimer = 0f;
+        deathMessageUI = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        if (SceneManager.GetActiveScene().name == "Dream World" && LevelManager.GetLevel() == 0)
+        {
+            deathMessageUI.color = new Color(1, 1, 1, 1);
+            deathMessageUI.text = "Jump and squish the spiders!\n\n Space to jump \n\nSpace while in air to double jump";
+            fadeTimer -= holdBlackScreenBeforeFadeIn + 2;
+        }
+        else if (SceneManager.GetActiveScene().name == "Depression Room" && LevelManager.GetLevel() == 0)
+        {
+            deathMessageUI.color = new Color(1, 1, 1, 1);
+            deathMessageUI.text = "This game contains references to topics such as depression and suicide which some players may find distressing. \n\n" +
+                "CW: negative self-talk, depression, suicidal ideation, insects, spiders\n\n" +
+                "\"Arachnaphobia\" mode and \"More Trigger Friendly\" mode (less negative messages) are available in the settings.";
+            fadeTimer -= holdBlackScreenBeforeFadeIn + 6;
+        }
+        else
+        {
+            deathMessageUI.color = new Color(1, 1, 1, 0);
+            deathMessageUI.text = "";
+        }
+
     }
 
     private void ResetGame()

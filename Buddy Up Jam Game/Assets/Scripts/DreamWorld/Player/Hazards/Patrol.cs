@@ -52,6 +52,25 @@ public class Patrol : MonoBehaviour
         //{
         //    Destroy(gameObject);
         //}
+        if (PauseMenu.Instance != null)
+        {
+            if (PauseMenu.Instance.arachnophobiaButton.isOn)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+
 
         if (invincibilityCooldown > 0)
         {

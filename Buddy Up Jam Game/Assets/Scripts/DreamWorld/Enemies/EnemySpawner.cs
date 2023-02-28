@@ -9,6 +9,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject leftSpawn;
     public GameObject rightSpawn;
 
+    private float startSpawnDelay = 2f;
+    private float startSpawnDelayTimer = 0f;
+
     public float spawnRate = 5f;
     private float spawnTimer = 0f;
 
@@ -42,14 +45,23 @@ public class EnemySpawner : MonoBehaviour
             amountToSpawn = parameters.amountToSpawn;
             maxAlive = parameters.maxAlive;
             spawnRate = parameters.spawnRate;
+
+            startSpawnDelayTimer = (level == 0 ? SceneFade.Instance.holdBlackScreenBeforeFadeIn + startSpawnDelay : startSpawnDelay);
         }
-        if (spawnTimer <= 0 && spidersAlive < maxAlive && amountSpawned < amountToSpawn)
+
+        if (startSpawnDelayTimer > 0)
+        {
+            startSpawnDelayTimer -= Time.deltaTime;
+        }
+
+        if (startSpawnDelayTimer <= 0 && spawnTimer <= 0 && spidersAlive < maxAlive && amountSpawned < amountToSpawn)
         {
             spawnTimer = spawnRate;
             GameObject enemy = Instantiate(enemyPrefab);
-            if(PauseMenu.Instance != null)
-                enemy.GetComponent<Patrol>().spiderMessageText.text = ( PauseMenu.Instance.triggerButton.isOn ? ":(" : spiderMessages[Random.Range(0, spiderMessages.Count)]);
-
+            if (PauseMenu.Instance != null)
+            {
+                enemy.GetComponent<Patrol>().spiderMessageText.text = (PauseMenu.Instance.triggerButton.isOn ? ":(" : spiderMessages[Random.Range(0, spiderMessages.Count)]);
+            }
             int spawnLocation = Random.Range(0, 2);
             enemy.transform.position = (spawnLocation == 0 ? rightSpawn.transform.position : leftSpawn.transform.position);
             if (spawnLocation == 0)
