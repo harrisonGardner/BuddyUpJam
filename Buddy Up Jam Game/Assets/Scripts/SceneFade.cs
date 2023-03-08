@@ -92,7 +92,6 @@ public class SceneFade : MonoBehaviour
 
             if (LevelManager.GetLevel() == 0 && deathMessageUI.text != "")
             {
-               
                 deathMessageUI.color = new Color(1, 1, 1, 1 - (Mathf.Max(fadeTimer, 0) / fadeSpeed));
             }
 
@@ -187,6 +186,7 @@ public class SceneFade : MonoBehaviour
         fadeDone = false;
         fadeTimer = 0f;
         deathMessageUI = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
         if (SceneManager.GetActiveScene().name == "Dream World" && LevelManager.GetLevel() == 0)
         {
             deathMessageUI.color = new Color(1, 1, 1, 1);

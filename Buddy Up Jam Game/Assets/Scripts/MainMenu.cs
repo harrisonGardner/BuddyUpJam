@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -31,6 +33,8 @@ public class MainMenu : MonoBehaviour
 
     public AudioClip notificationSound;
     public AudioSource notificationSource;
+
+    
     private void Start()
     {
         playerCam = cam.GetComponent<PlayerCam>();
@@ -72,8 +76,11 @@ public class MainMenu : MonoBehaviour
             cam.transform.position = transform.position + (cameraTargetVector * adjustedTransitionTime);
             cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x, cam.transform.eulerAngles.y, (1 - adjustedTransitionTime) * 90f);
 
-            if(LevelManager.GetLevel() <= 0)
+            if (LevelManager.GetLevel() <= 0)
+            {
+               
                 canvasGroup.alpha = (1 - adjustedTransitionTime);
+            }
 
             if (transitionTimer >= transitionTime)
                 transitionFinished = true;

@@ -19,6 +19,7 @@ TagManager:
   - TriggerWall
   - EffectsSources
   - MusicSources
+  - PostProcess
   layers:
   - Default
   - TransparentFX

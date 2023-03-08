@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class MessageView : MonoBehaviour
 {
-    public List<MessageSequence> messages = new List<MessageSequence>();
+    public List<MessageSequence> messageSequences = new List<MessageSequence>();
+    public List<string> messageSequenceFileName = new List<string>();
+    private List<Message> messages = new List<Message>();
     private int pointer = 0;
 
     public ComputerInteraction computerInteraction;
@@ -47,7 +49,7 @@ public class MessageView : MonoBehaviour
             {
                 RevealNextMessage();
                 pointer++;
-                if (pointer >= messages[level].sender.Count)
+                if (pointer >= messages.Count)
                 {
                     LevelManager.messagesRead = true;
                     if (LevelManager.GetLevel() >= 3)
@@ -62,16 +64,22 @@ public class MessageView : MonoBehaviour
 
     private void InitializeMessages()
     {
-        for (int i = 0; i < messages[level].sender.Count; i++)
+        TextAsset jsonText = Resources.Load<TextAsset>("MessageSequences/" + messageSequenceFileName[level]);
+
+        MessageSequenceJson sequence = JsonUtility.FromJson<MessageSequenceJson>(jsonText.text);
+
+        messages = sequence.messages;
+
+        for (int i = 0; i < messages.Count; i++)
         {
-            if (messages[level].sender[i] != "" && messages[level].sender[i] != "-")
+            if (messages[i].sender != "" && messages[i].sender != "-")
             {
-                sender.text = messages[level].sender[i];
+                sender.text = messages[i].sender;
                 break;
             }
         }
 
-        for (int i = 0; i < messages[level].presentMessageCount; i++)
+        for (int i = 0; i < sequence.preSentMessageCount; i++)
         {
             RevealNextMessage();
             pointer++;
@@ -80,30 +88,29 @@ public class MessageView : MonoBehaviour
 
     public void RevealNextMessage()
     {
-        if (pointer < messages[level].sender.Count)
+        if (pointer < messages.Count)
         {
-
-            if (messages[level].timestamp[pointer] != "")
+            if (messages[pointer].timestamp != "")
             {
                 GameObject message = GameObject.Instantiate(timeStampPrefab, scrollView.transform);
                 message.GetComponent<RectTransform>().localPosition = new Vector3(430, -totalMessagesHeight, 0);
-                message.GetComponent<TextMeshProUGUI>().text = messages[level].timestamp[pointer];
+                message.GetComponent<TextMeshProUGUI>().text = messages[pointer].timestamp;
 
-                totalMessagesHeight += 100; //150 is space between messages, 100 is height of messages
+                totalMessagesHeight += 100;
             }
             else
             {
                 GameObject message = GameObject.Instantiate(messagePrefab, scrollView.transform);
-                message.GetComponent<RectTransform>().localPosition = new Vector3((messages[level].sender[pointer] == "" || messages[level].sender[pointer] == "You" ? 1150 : 200), -totalMessagesHeight, 0);
-                message.GetComponent<MessageObject>().message.text = messages[level].message[pointer];
-                message.GetComponent<MessageObject>().sender.text = messages[level].sender[pointer];
+                message.GetComponent<RectTransform>().localPosition = new Vector3((messages[pointer].sender == "" || messages[pointer].sender == "You" ? 1150 : 200), -totalMessagesHeight, 0);
+                message.GetComponent<MessageObject>().message.text = messages[pointer].message;
+                message.GetComponent<MessageObject>().sender.text = messages[pointer].sender;
 
-                if (messages[level].sender[pointer] != "You")
+                if (messages[pointer].sender != "You")
                     audioSource.PlayOneShot(receivedSound);
                 else
                     audioSource.PlayOneShot(sentSound);
 
-                totalMessagesHeight += 150; //150 is space between messages, 100 is height of messages
+                totalMessagesHeight += 150;
             }
             
             if (totalMessagesHeight > contentStartHeight)
