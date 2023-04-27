@@ -103,6 +103,8 @@ public class MessageView : MonoBehaviour
                 GameObject message = GameObject.Instantiate(messagePrefab, scrollView.transform);
                 message.GetComponent<RectTransform>().localPosition = new Vector3((messages[pointer].sender == "" || messages[pointer].sender == "You" ? 1150 : 200), -totalMessagesHeight, 0);
                 message.GetComponent<MessageObject>().message.text = messages[pointer].message;
+                message.GetComponent<MessageObject>().message.ForceMeshUpdate();
+                message.GetComponent<RectTransform>().sizeDelta = new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, message.GetComponent<MessageObject>().message.renderedHeight + 10f);
                 message.GetComponent<MessageObject>().sender.text = messages[pointer].sender;
 
                 if (messages[pointer].sender != "You")
@@ -110,7 +112,7 @@ public class MessageView : MonoBehaviour
                 else
                     audioSource.PlayOneShot(sentSound);
 
-                totalMessagesHeight += 150;
+                totalMessagesHeight += message.GetComponent<MessageObject>().message.renderedHeight + 80f;
             }
             
             if (totalMessagesHeight > contentStartHeight)
