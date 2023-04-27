@@ -71,28 +71,23 @@ public class PlayerMovement2D : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, 0.05f, whatIsGround);
 
-        Debug.DrawRay(transform.position + (Vector3.down * 0.05f), Vector3.down, Color.red, 0.5f, false);
+        //Debug.DrawRay(transform.position + (Vector3.down * 0.05f), Vector3.down, Color.red, 0.5f, false);
 
-        RaycastHit hit;
+        //RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.15f))
-        {
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                if (rb.velocity.y < 0)
-                {
-                    if (hit.collider.gameObject.GetComponent<Patrol>().Kill())
-                    {
-                        Jump(jumpHeight);
-                        doubleJumped = false;
-
-                        health.ActivateInvincibility(0.2f);
-
-                        platformController.GetComponent<PlatformController>().TryRevealNextPlatform();
-                    }
-                }
-            }
-        }
+        //if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.15f))
+        //{
+        //    if (hit.collider.gameObject.CompareTag("Enemy"))
+        //    {
+        //        if (rb.velocity.y <= 0)
+        //        {
+        //            if (hit.collider.gameObject.GetComponent<Patrol>().Kill())
+        //            {
+        //                KilledSpider();
+        //            }
+        //        }
+        //    }
+        //}
 
         if (grounded)
         {
@@ -100,14 +95,14 @@ public class PlayerMovement2D : MonoBehaviour
         }
         else if (!grounded)
         {
-            if(coyoteTimer > 0)
+            if (coyoteTimer > 0)
                 coyoteTimer -= Time.deltaTime;
         }
 
         if (!grounded && coyoteTimer <= 0)
         {
             anim.SetBool("Grounded", false);
-            if(rb.velocity.y < 0)
+            if (rb.velocity.y < 0)
                 anim.SetBool("Falling", true);
         }
         else
@@ -160,6 +155,16 @@ public class PlayerMovement2D : MonoBehaviour
         }
 
         SpeedControl();
+    }
+
+    public void KilledSpider()
+    {
+        Jump(jumpHeight);
+        doubleJumped = false;
+
+        health.ActivateInvincibility(0.2f);
+
+        platformController.GetComponent<PlatformController>().TryRevealNextPlatform();
     }
 
     public void Jump(float power)

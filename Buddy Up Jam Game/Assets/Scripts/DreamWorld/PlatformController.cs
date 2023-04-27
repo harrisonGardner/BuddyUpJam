@@ -24,7 +24,6 @@ public class PlatformController : MonoBehaviour
     {
         if ((spawner.amountSpawned - spawner.spidersAlive) >= (spawner.amountToSpawn / platforms.Count) * (pointer + 1))
         {
-            Debug.Log((pointer) + ":" + (platforms.Count - 1));
             if (pointer == platforms.Count - 1 && (spawner.amountSpawned - spawner.spidersAlive) == spawner.amountToSpawn)
             {
                 platforms[pointer].GetComponent<Platform>().RevealPlatform();

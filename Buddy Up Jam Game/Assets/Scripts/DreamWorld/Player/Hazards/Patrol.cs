@@ -143,12 +143,21 @@ public class Patrol : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            invincibilityCooldown = invicibiltyTime;
-            //other.gameObject.transform.position += Vector3.up * 1f;
-            other.gameObject.GetComponent<PlayerHealth>().Damage(25f);
-            //other.gameObject.GetComponent<Rigidbody>().AddForce((Vector3.up + (rb.velocity.normalized * 115)).normalized * attackKnockback, ForceMode.Impulse);
+            if (other.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
+            {
+                Kill();
+                other.gameObject.GetComponent<PlayerMovement2D>().KilledSpider();
+            }
+            else
+            {
 
-            chasing = false;
+                invincibilityCooldown = invicibiltyTime;
+                //other.gameObject.transform.position += Vector3.up * 1f;
+                other.gameObject.GetComponent<PlayerHealth>().Damage(25f);
+                //other.gameObject.GetComponent<Rigidbody>().AddForce((Vector3.up + (rb.velocity.normalized * 115)).normalized * attackKnockback, ForceMode.Impulse);
+
+                chasing = false;
+            }
         }
     }
 }
